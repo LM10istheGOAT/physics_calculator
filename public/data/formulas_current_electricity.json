@@ -1,0 +1,660 @@
+{
+  "chapter_id": "current_electricity",
+  "chapter_name": "Current Electricity",
+  "chapter_name_bn": "চল তড়িৎ",
+  "formulas": [
+    {
+      "id": "ohms_law",
+      "name": "Ohm's Law",
+      "name_bn": "ওহমের সূত্র",
+      "type": "ohms_law",
+      "chapter": "current_electricity",
+      "variables": {
+        "V_ohm": {
+          "label": "Voltage",
+          "label_bn": "বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "I": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        },
+        "R": {
+          "label": "Resistance",
+          "label_bn": "রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        }
+      },
+      "solve_for": {
+        "V_ohm": {
+          "expr": "I*R",
+          "solvable": true
+        },
+        "I": {
+          "expr": "V_ohm/R",
+          "solvable": true
+        },
+        "R": {
+          "expr": "V_ohm/I",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "R > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "V_ohm",
+        "I",
+        "R"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "resistivity",
+      "name": "Resistivity",
+      "name_bn": "আপেক্ষিক রোধ",
+      "type": "ohms_law",
+      "chapter": "current_electricity",
+      "variables": {
+        "rho_res": {
+          "label": "Resistivity",
+          "label_bn": "আপেক্ষিক রোধ",
+          "unit": "Ohm*m",
+          "si_unit": "Ohm*m"
+        },
+        "R": {
+          "label": "Resistance",
+          "label_bn": "রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "A": {
+          "label": "Cross-Section Area",
+          "label_bn": "প্রস্থচ্ছেদ",
+          "unit": "m^2",
+          "si_unit": "m^2"
+        },
+        "L": {
+          "label": "Length",
+          "label_bn": "দৈর্ঘ্য",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "rho_res": {
+          "expr": "R*A/L",
+          "solvable": true
+        },
+        "R": {
+          "expr": "rho_res*L/A",
+          "solvable": true
+        },
+        "A": {
+          "expr": "rho_res*L/R",
+          "solvable": true
+        },
+        "L": {
+          "expr": "R*A/rho_res",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "L > 0",
+        "A > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "rho_res",
+        "R",
+        "A",
+        "L"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "resistance_temperature",
+      "name": "Resistance vs Temperature",
+      "name_bn": "তাপমাত্রার সাথে রোধ",
+      "type": "ohms_law",
+      "chapter": "current_electricity",
+      "variables": {
+        "R2": {
+          "label": "Resistance at T2",
+          "label_bn": "T2 তাপমাত্রায় রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "R1": {
+          "label": "Resistance at T1",
+          "label_bn": "T1 তাপমাত্রায় রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "alpha_R": {
+          "label": "Temperature Coefficient",
+          "label_bn": "তাপমাত্রা গুণাঙ্ক",
+          "unit": "1/K",
+          "si_unit": "1/K"
+        },
+        "delta_T_res": {
+          "label": "Temperature Change",
+          "label_bn": "তাপমাত্রা পরিবর্তন",
+          "unit": "K",
+          "si_unit": "K"
+        }
+      },
+      "solve_for": {
+        "R2": {
+          "expr": "R1*(1 + alpha_R*delta_T_res)",
+          "solvable": true
+        },
+        "R1": {
+          "expr": "R2/(1 + alpha_R*delta_T_res)",
+          "solvable": true
+        },
+        "alpha_R": {
+          "expr": "(R2 - R1)/(R1*delta_T_res)",
+          "solvable": true
+        },
+        "delta_T_res": {
+          "expr": "(R2 - R1)/(R1*alpha_R)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "R1 > 0",
+        "1 + alpha_R*delta_T_res != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "R2",
+        "R1",
+        "alpha_R",
+        "delta_T_res"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "electric_power_vi",
+      "name": "Electric Power (V×I)",
+      "name_bn": "তড়িৎ ক্ষমতা (V×I)",
+      "type": "electric_power_type",
+      "chapter": "current_electricity",
+      "variables": {
+        "P_elec": {
+          "label": "Electric Power",
+          "label_bn": "তড়িৎ ক্ষমতা",
+          "unit": "W",
+          "si_unit": "W"
+        },
+        "V_pwr": {
+          "label": "Voltage",
+          "label_bn": "বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "I_pwr": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        }
+      },
+      "solve_for": {
+        "P_elec": {
+          "expr": "V_pwr*I_pwr",
+          "solvable": true
+        },
+        "V_pwr": {
+          "expr": "P_elec/I_pwr",
+          "solvable": true
+        },
+        "I_pwr": {
+          "expr": "P_elec/V_pwr",
+          "solvable": true
+        }
+      },
+      "constraints": [],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "P_elec",
+        "V_pwr",
+        "I_pwr"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "electric_power_i2r",
+      "name": "Electric Power (I²R)",
+      "name_bn": "তড়িৎ ক্ষমতা (I²R)",
+      "type": "electric_power_type",
+      "chapter": "current_electricity",
+      "variables": {
+        "P_elec2": {
+          "label": "Electric Power",
+          "label_bn": "তড়িৎ ক্ষমতা",
+          "unit": "W",
+          "si_unit": "W"
+        },
+        "I_i2r": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        },
+        "R_i2r": {
+          "label": "Resistance",
+          "label_bn": "রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        }
+      },
+      "solve_for": {
+        "P_elec2": {
+          "expr": "I_i2r^2*R_i2r",
+          "solvable": true
+        },
+        "I_i2r": {
+          "expr": "sqrt(P_elec2/R_i2r)",
+          "solvable": true
+        },
+        "R_i2r": {
+          "expr": "P_elec2/I_i2r^2",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "R_i2r > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "P_elec2",
+        "I_i2r",
+        "R_i2r"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "electric_energy",
+      "name": "Electrical Energy",
+      "name_bn": "তড়িৎ শক্তি",
+      "type": "electric_power_type",
+      "chapter": "current_electricity",
+      "variables": {
+        "E_elec": {
+          "label": "Electrical Energy",
+          "label_bn": "তড়িৎ শক্তি",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "P_en": {
+          "label": "Power",
+          "label_bn": "ক্ষমতা",
+          "unit": "W",
+          "si_unit": "W"
+        },
+        "t_en": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "E_elec": {
+          "expr": "P_en*t_en",
+          "solvable": true
+        },
+        "P_en": {
+          "expr": "E_elec/t_en",
+          "solvable": true
+        },
+        "t_en": {
+          "expr": "E_elec/P_en",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t_en > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "E_elec",
+        "P_en",
+        "t_en"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "resistor_series",
+      "name": "Resistors in Series",
+      "name_bn": "শ্রেণিসমবায় রোধ",
+      "type": "circuit_analysis",
+      "chapter": "current_electricity",
+      "variables": {
+        "R_eq_s": {
+          "label": "Equivalent Resistance",
+          "label_bn": "তুল্য রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "R1_s": {
+          "label": "Resistor 1",
+          "label_bn": "রোধ ১",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "R2_s": {
+          "label": "Resistor 2",
+          "label_bn": "রোধ ২",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        }
+      },
+      "solve_for": {
+        "R_eq_s": {
+          "expr": "R1_s + R2_s",
+          "solvable": true
+        },
+        "R1_s": {
+          "expr": "R_eq_s - R2_s",
+          "solvable": true
+        },
+        "R2_s": {
+          "expr": "R_eq_s - R1_s",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "R1_s > 0",
+        "R2_s > 0"
+      ],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "R_eq_s",
+        "R1_s",
+        "R2_s"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "resistor_parallel",
+      "name": "Resistors in Parallel",
+      "name_bn": "সমান্তরাল সমবায় রোধ",
+      "type": "circuit_analysis",
+      "chapter": "current_electricity",
+      "variables": {
+        "R_eq_p": {
+          "label": "Equivalent Resistance",
+          "label_bn": "তুল্য রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "R1_p": {
+          "label": "Resistor 1",
+          "label_bn": "রোধ ১",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "R2_p": {
+          "label": "Resistor 2",
+          "label_bn": "রোধ ২",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        }
+      },
+      "solve_for": {
+        "R_eq_p": {
+          "expr": "R1_p*R2_p/(R1_p + R2_p)",
+          "solvable": true
+        },
+        "R1_p": {
+          "expr": "R_eq_p*R2_p/(R2_p - R_eq_p)",
+          "solvable": true
+        },
+        "R2_p": {
+          "expr": "R_eq_p*R1_p/(R1_p - R_eq_p)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "R1_p > 0",
+        "R2_p > 0",
+        "R2_p > R_eq_p"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "R_eq_p",
+        "R1_p",
+        "R2_p"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "wheatstone_bridge",
+      "name": "Wheatstone Bridge",
+      "name_bn": "হোয়াটস্টোন ব্রিজ",
+      "type": "wheatstone",
+      "chapter": "current_electricity",
+      "variables": {
+        "P_wb": {
+          "label": "Arm P",
+          "label_bn": "বাহু P",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "Q_wb": {
+          "label": "Arm Q",
+          "label_bn": "বাহু Q",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "R_wb": {
+          "label": "Arm R",
+          "label_bn": "বাহু R",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "S_wb": {
+          "label": "Arm S (Unknown)",
+          "label_bn": "বাহু S (অজানা)",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        }
+      },
+      "solve_for": {
+        "S_wb": {
+          "expr": "R_wb*Q_wb/P_wb",
+          "solvable": true
+        },
+        "R_wb": {
+          "expr": "S_wb*P_wb/Q_wb",
+          "solvable": true
+        },
+        "Q_wb": {
+          "expr": "S_wb*P_wb/R_wb",
+          "solvable": true
+        },
+        "P_wb": {
+          "expr": "R_wb*Q_wb/S_wb",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "P_wb > 0",
+        "Q_wb > 0",
+        "R_wb > 0",
+        "S_wb > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "P_wb",
+        "Q_wb",
+        "R_wb",
+        "S_wb"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "emf_terminal",
+      "name": "EMF with Internal Resistance",
+      "name_bn": "আভ্যন্তরীণ রোধসহ তড়িৎ চালক বল",
+      "type": "emf_internal",
+      "chapter": "current_electricity",
+      "variables": {
+        "EMF": {
+          "label": "EMF",
+          "label_bn": "তড়িৎ চালক বল",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "V_term": {
+          "label": "Terminal Voltage",
+          "label_bn": "প্রান্তিক বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "I_emf": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        },
+        "r_int": {
+          "label": "Internal Resistance",
+          "label_bn": "আভ্যন্তরীণ রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        }
+      },
+      "solve_for": {
+        "EMF": {
+          "expr": "V_term + I_emf*r_int",
+          "solvable": true
+        },
+        "V_term": {
+          "expr": "EMF - I_emf*r_int",
+          "solvable": true
+        },
+        "I_emf": {
+          "expr": "(EMF - V_term)/r_int",
+          "solvable": true
+        },
+        "r_int": {
+          "expr": "(EMF - V_term)/I_emf",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "r_int > 0",
+        "I_emf > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "EMF",
+        "V_term",
+        "I_emf",
+        "r_int"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "cells_series",
+      "name": "Cells in Series",
+      "name_bn": "শ্রেণিসমবায় কোষ",
+      "type": "emf_internal",
+      "chapter": "current_electricity",
+      "variables": {
+        "EMF_total_s": {
+          "label": "Total EMF",
+          "label_bn": "মোট তড়িৎ চালক বল",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "E1_s": {
+          "label": "Cell 1 EMF",
+          "label_bn": "কোষ ১ এর EMF",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "E2_s": {
+          "label": "Cell 2 EMF",
+          "label_bn": "কোষ ২ এর EMF",
+          "unit": "V",
+          "si_unit": "V"
+        }
+      },
+      "solve_for": {
+        "EMF_total_s": {
+          "expr": "E1_s + E2_s",
+          "solvable": true
+        },
+        "E1_s": {
+          "expr": "EMF_total_s - E2_s",
+          "solvable": true
+        },
+        "E2_s": {
+          "expr": "EMF_total_s - E1_s",
+          "solvable": true
+        }
+      },
+      "constraints": [],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "EMF_total_s",
+        "E1_s",
+        "E2_s"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    }
+  ],
+  "total_formulas": 11,
+  "total_types": 5
+}

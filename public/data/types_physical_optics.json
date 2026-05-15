@@ -1,0 +1,33 @@
+{
+  "chapter_id": "physical_optics",
+  "chapter_name": "Physical Optics",
+  "chapter_name_bn": "ভৌত আলোক বিজ্ঞান",
+  "types": [
+    {
+      "id": "interference_optics",
+      "name": "Interference",
+      "name_bn": "ব্যতিচার",
+      "formulas": [
+        "double_slit_fringe",
+        "fringe_width"
+      ]
+    },
+    {
+      "id": "diffraction",
+      "name": "Diffraction",
+      "name_bn": "অপবর্তন",
+      "formulas": [
+        "single_slit_min",
+        "diffraction_grating"
+      ]
+    },
+    {
+      "id": "em_waves",
+      "name": "Electromagnetic Waves",
+      "name_bn": "তড়িচ্চুম্বকীয় তরঙ্গ",
+      "formulas": [
+        "em_wave_speed"
+      ]
+    }
+  ]
+}

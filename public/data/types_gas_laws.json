@@ -1,0 +1,29 @@
+{
+  "chapter_id": "gas_laws",
+  "chapter_name": "Ideal Gas & Kinetic Theory",
+  "chapter_name_bn": "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব",
+  "types": [
+    {
+      "id": "gas_laws_basic",
+      "name": "Gas Laws",
+      "name_bn": "গ্যাস সূত্রাবলি",
+      "formulas": [
+        "boyles_law",
+        "charles_law",
+        "gay_lussacs_law",
+        "combined_gas_law",
+        "ideal_gas_law"
+      ]
+    },
+    {
+      "id": "kinetic_theory",
+      "name": "Kinetic Theory",
+      "name_bn": "গতিতত্ত্ব",
+      "formulas": [
+        "rms_speed",
+        "avg_ke_molecule",
+        "mean_free_path"
+      ]
+    }
+  ]
+}

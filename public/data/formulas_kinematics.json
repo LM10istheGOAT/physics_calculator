@@ -1,0 +1,739 @@
+{
+  "chapter_id": "kinematics",
+  "chapter_name": "Kinematics",
+  "chapter_name_bn": "গতিবিদ্যা",
+  "formulas": [
+    {
+      "id": "eq_v_u_at",
+      "name": "First Equation of Motion",
+      "name_bn": "প্রথম গতিসমীকরণ",
+      "type": "kinematics_linear",
+      "chapter": "kinematics",
+      "variables": {
+        "v": {
+          "label": "Final Velocity",
+          "label_bn": "প্রান্তিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "u": {
+          "label": "Initial Velocity",
+          "label_bn": "প্রাথমিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "a": {
+          "label": "Acceleration",
+          "label_bn": "ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "v": {
+          "expr": "u + a*t",
+          "solvable": true
+        },
+        "u": {
+          "expr": "v - a*t",
+          "solvable": true
+        },
+        "a": {
+          "expr": "(v - u)/t",
+          "solvable": true
+        },
+        "t": {
+          "expr": "(v - u)/a",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v",
+        "u",
+        "a",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "eq_s_ut_half_at2",
+      "name": "Second Equation of Motion",
+      "name_bn": "দ্বিতীয় গতিসমীকরণ",
+      "type": "kinematics_linear",
+      "chapter": "kinematics",
+      "variables": {
+        "s": {
+          "label": "Displacement",
+          "label_bn": "সরণ",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "u": {
+          "label": "Initial Velocity",
+          "label_bn": "প্রাথমিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "a": {
+          "label": "Acceleration",
+          "label_bn": "ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "s": {
+          "expr": "u*t + 0.5*a*t^2",
+          "solvable": true
+        },
+        "u": {
+          "expr": "(s - 0.5*a*t^2)/t",
+          "solvable": true
+        },
+        "a": {
+          "expr": "2*(s - u*t)/t^2",
+          "solvable": true
+        },
+        "t": {
+          "expr": "(-u + sqrt(u^2 + 2*a*s))/a",
+          "solvable": true,
+          "note": "Quadratic; positive root taken"
+        }
+      },
+      "constraints": [
+        "t > 0",
+        "u^2 + 2*a*s >= 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "s",
+        "u",
+        "a",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "eq_v2_u2_2as",
+      "name": "Third Equation of Motion",
+      "name_bn": "তৃতীয় গতিসমীকরণ",
+      "type": "kinematics_linear",
+      "chapter": "kinematics",
+      "variables": {
+        "v": {
+          "label": "Final Velocity",
+          "label_bn": "প্রান্তিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "u": {
+          "label": "Initial Velocity",
+          "label_bn": "প্রাথমিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "a": {
+          "label": "Acceleration",
+          "label_bn": "ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "s": {
+          "label": "Displacement",
+          "label_bn": "সরণ",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "v": {
+          "expr": "sqrt(u^2 + 2*a*s)",
+          "solvable": true
+        },
+        "u": {
+          "expr": "sqrt(v^2 - 2*a*s)",
+          "solvable": true
+        },
+        "a": {
+          "expr": "(v^2 - u^2)/(2*s)",
+          "solvable": true
+        },
+        "s": {
+          "expr": "(v^2 - u^2)/(2*a)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "u^2 + 2*a*s >= 0",
+        "v^2 - 2*a*s >= 0",
+        "s != 0 for a solve",
+        "a != 0 for s solve"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v",
+        "u",
+        "a",
+        "s"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "eq_s_half_v_plus_u_t",
+      "name": "Displacement from Average Velocity",
+      "name_bn": "গড় বেগ থেকে সরণ",
+      "type": "kinematics_linear",
+      "chapter": "kinematics",
+      "variables": {
+        "s": {
+          "label": "Displacement",
+          "label_bn": "সরণ",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "v": {
+          "label": "Final Velocity",
+          "label_bn": "প্রান্তিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "u": {
+          "label": "Initial Velocity",
+          "label_bn": "প্রাথমিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "s": {
+          "expr": "0.5*(v + u)*t",
+          "solvable": true
+        },
+        "v": {
+          "expr": "2*s/t - u",
+          "solvable": true
+        },
+        "u": {
+          "expr": "2*s/t - v",
+          "solvable": true
+        },
+        "t": {
+          "expr": "2*s/(v + u)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t > 0",
+        "v + u != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "s",
+        "v",
+        "u",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "freefall_v_gt",
+      "name": "Free Fall Velocity",
+      "name_bn": "মুক্ত পতনের বেগ",
+      "type": "kinematics_freefall",
+      "chapter": "kinematics",
+      "variables": {
+        "v": {
+          "label": "Final Velocity",
+          "label_bn": "প্রান্তিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "v": {
+          "expr": "g*t",
+          "solvable": true
+        },
+        "g": {
+          "expr": "v/t",
+          "solvable": true
+        },
+        "t": {
+          "expr": "v/g",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t > 0",
+        "g > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v",
+        "g",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "freefall_h_half_gt2",
+      "name": "Free Fall Height",
+      "name_bn": "মুক্ত পতনের উচ্চতা",
+      "type": "kinematics_freefall",
+      "chapter": "kinematics",
+      "variables": {
+        "h": {
+          "label": "Height Fallen",
+          "label_bn": "পতন উচ্চতা",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "h": {
+          "expr": "0.5*g*t^2",
+          "solvable": true
+        },
+        "g": {
+          "expr": "2*h/t^2",
+          "solvable": true
+        },
+        "t": {
+          "expr": "sqrt(2*h/g)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "h >= 0",
+        "g > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "h",
+        "g",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "freefall_v2_2gh",
+      "name": "Free Fall Velocity from Height",
+      "name_bn": "উচ্চতা থেকে মুক্ত পতনের বেগ",
+      "type": "kinematics_freefall",
+      "chapter": "kinematics",
+      "variables": {
+        "v": {
+          "label": "Final Velocity",
+          "label_bn": "প্রান্তিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "h": {
+          "label": "Height",
+          "label_bn": "উচ্চতা",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "v": {
+          "expr": "sqrt(2*g*h)",
+          "solvable": true
+        },
+        "g": {
+          "expr": "v^2/(2*h)",
+          "solvable": true
+        },
+        "h": {
+          "expr": "v^2/(2*g)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "h >= 0",
+        "g > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v",
+        "g",
+        "h"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "avg_velocity",
+      "name": "Average Velocity",
+      "name_bn": "গড় বেগ",
+      "type": "kinematics_average",
+      "chapter": "kinematics",
+      "variables": {
+        "v_avg": {
+          "label": "Average Velocity",
+          "label_bn": "গড় বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "s": {
+          "label": "Total Displacement",
+          "label_bn": "মোট সরণ",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "t": {
+          "label": "Total Time",
+          "label_bn": "মোট সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "v_avg": {
+          "expr": "s/t",
+          "solvable": true
+        },
+        "s": {
+          "expr": "v_avg*t",
+          "solvable": true
+        },
+        "t": {
+          "expr": "s/v_avg",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v_avg",
+        "s",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "avg_speed",
+      "name": "Average Speed",
+      "name_bn": "গড় দ্রুতি",
+      "type": "kinematics_average",
+      "chapter": "kinematics",
+      "variables": {
+        "v_avg_spd": {
+          "label": "Average Speed",
+          "label_bn": "গড় দ্রুতি",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "d": {
+          "label": "Total Distance",
+          "label_bn": "মোট দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "t": {
+          "label": "Total Time",
+          "label_bn": "মোট সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "v_avg_spd": {
+          "expr": "d/t",
+          "solvable": true
+        },
+        "d": {
+          "expr": "v_avg_spd*t",
+          "solvable": true
+        },
+        "t": {
+          "expr": "d/v_avg_spd",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t > 0",
+        "d >= 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v_avg_spd",
+        "d",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "displacement_from_velocity",
+      "name": "Displacement from V-T Graph",
+      "name_bn": "V-T লেখচিত্র থেকে সরণ",
+      "type": "kinematics_graphical",
+      "chapter": "kinematics",
+      "variables": {
+        "s": {
+          "label": "Displacement (Area under V-T)",
+          "label_bn": "সরণ (V-T লেখের নিচের ক্ষেত্রফল)",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "v": {
+          "label": "Velocity",
+          "label_bn": "বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "u": {
+          "label": "Initial Velocity",
+          "label_bn": "প্রাথমিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "s": {
+          "expr": "0.5*(v + u)*t",
+          "solvable": true
+        },
+        "v": {
+          "expr": "2*s/t - u",
+          "solvable": true
+        },
+        "u": {
+          "expr": "2*s/t - v",
+          "solvable": true
+        },
+        "t": {
+          "expr": "2*s/(v + u)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "s",
+        "v",
+        "u",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "distance_vt_area",
+      "name": "Distance from V-T Graph Area (Uniform)",
+      "name_bn": "V-T লেখের ক্ষেত্রফল থেকে দূরত্ব",
+      "type": "kinematics_graphical",
+      "chapter": "kinematics",
+      "variables": {
+        "d": {
+          "label": "Distance",
+          "label_bn": "দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "v": {
+          "label": "Constant Velocity",
+          "label_bn": "ধ্রুব বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "d": {
+          "expr": "v*t",
+          "solvable": true
+        },
+        "v": {
+          "expr": "d/t",
+          "solvable": true
+        },
+        "t": {
+          "expr": "d/v",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t > 0",
+        "v >= 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "d",
+        "v",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "acceleration_vt_slope",
+      "name": "Acceleration from V-T Graph Slope",
+      "name_bn": "V-T লেখের ঢাল থেকে ত্বরণ",
+      "type": "kinematics_graphical",
+      "chapter": "kinematics",
+      "variables": {
+        "a": {
+          "label": "Acceleration",
+          "label_bn": "ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "delta_v": {
+          "label": "Change in Velocity",
+          "label_bn": "বেগের পরিবর্তন",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "delta_t": {
+          "label": "Change in Time",
+          "label_bn": "সময়ের পরিবর্তন",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "a": {
+          "expr": "delta_v/delta_t",
+          "solvable": true
+        },
+        "delta_v": {
+          "expr": "a*delta_t",
+          "solvable": true
+        },
+        "delta_t": {
+          "expr": "delta_v/a",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "delta_t > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "a",
+        "delta_v",
+        "delta_t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    }
+  ],
+  "total_formulas": 12,
+  "total_types": 4
+}

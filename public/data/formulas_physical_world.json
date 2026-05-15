@@ -1,0 +1,293 @@
+{
+  "chapter_id": "physical_world",
+  "chapter_name": "Physical World & Measurement",
+  "chapter_name_bn": "পদার্থের ভৌত অবস্থা ও পরিমাপ",
+  "formulas": [
+    {
+      "id": "cgs_to_si_force",
+      "name": "CGS to SI Force Conversion",
+      "name_bn": "বলের CGS থেকে SI রূপান্তর",
+      "type": "unit_conversion",
+      "chapter": "physical_world",
+      "variables": {
+        "F_si": {
+          "label": "Force (SI - Newton)",
+          "label_bn": "বল (SI - নিউটন)",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "F_cgs": {
+          "label": "Force (CGS - Dyne)",
+          "label_bn": "বল (CGS - ডাইন)",
+          "unit": "dyn",
+          "si_unit": "N"
+        }
+      },
+      "solve_for": {
+        "F_si": {
+          "expr": "F_cgs*1e-5",
+          "solvable": true
+        },
+        "F_cgs": {
+          "expr": "F_si*1e5",
+          "solvable": true
+        }
+      },
+      "constraints": [],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "F_si",
+        "F_cgs"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "cgs_to_si_energy",
+      "name": "CGS to SI Energy Conversion",
+      "name_bn": "শক্তির CGS থেকে SI রূপান্তর",
+      "type": "unit_conversion",
+      "chapter": "physical_world",
+      "variables": {
+        "E_si": {
+          "label": "Energy (SI - Joule)",
+          "label_bn": "শক্তি (SI - জুল)",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "E_cgs": {
+          "label": "Energy (CGS - Erg)",
+          "label_bn": "শক্তি (CGS - আর্গ)",
+          "unit": "erg",
+          "si_unit": "J"
+        }
+      },
+      "solve_for": {
+        "E_si": {
+          "expr": "E_cgs*1e-7",
+          "solvable": true
+        },
+        "E_cgs": {
+          "expr": "E_si*1e7",
+          "solvable": true
+        }
+      },
+      "constraints": [],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "E_si",
+        "E_cgs"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "cgs_to_si_pressure",
+      "name": "CGS to SI Pressure Conversion",
+      "name_bn": "চাপের CGS থেকে SI রূপান্তর",
+      "type": "unit_conversion",
+      "chapter": "physical_world",
+      "variables": {
+        "P_si": {
+          "label": "Pressure (SI - Pa)",
+          "label_bn": "চাপ (SI - পাস্কাল)",
+          "unit": "Pa",
+          "si_unit": "Pa"
+        },
+        "P_cgs": {
+          "label": "Pressure (CGS - Ba)",
+          "label_bn": "চাপ (CGS - ব্যারি)",
+          "unit": "Ba",
+          "si_unit": "Pa"
+        }
+      },
+      "solve_for": {
+        "P_si": {
+          "expr": "P_cgs*0.1",
+          "solvable": true
+        },
+        "P_cgs": {
+          "expr": "P_si*10",
+          "solvable": true
+        }
+      },
+      "constraints": [],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "P_si",
+        "P_cgs"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "error_addition_subtraction",
+      "name": "Error in Addition/Subtraction",
+      "name_bn": "যোগ/বিয়োগে ত্রুটি",
+      "type": "error_propagation",
+      "chapter": "physical_world",
+      "variables": {
+        "delta_Z": {
+          "label": "Absolute Error in Z",
+          "label_bn": "Z এ পরম ত্রুটি",
+          "unit": "",
+          "si_unit": ""
+        },
+        "delta_A": {
+          "label": "Absolute Error in A",
+          "label_bn": "A এ পরম ত্রুটি",
+          "unit": "",
+          "si_unit": ""
+        },
+        "delta_B": {
+          "label": "Absolute Error in B",
+          "label_bn": "B এ পরম ত্রুটি",
+          "unit": "",
+          "si_unit": ""
+        }
+      },
+      "solve_for": {
+        "delta_Z": {
+          "expr": "delta_A + delta_B",
+          "solvable": true
+        },
+        "delta_A": {
+          "expr": "delta_Z - delta_B",
+          "solvable": true
+        },
+        "delta_B": {
+          "expr": "delta_Z - delta_A",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "delta_A >= 0",
+        "delta_B >= 0"
+      ],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "delta_Z",
+        "delta_A",
+        "delta_B"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "error_multiplication_division",
+      "name": "Error in Multiplication/Division",
+      "name_bn": "গুণ/ভাগে ত্রুটি",
+      "type": "error_propagation",
+      "chapter": "physical_world",
+      "variables": {
+        "delta_Z_frac": {
+          "label": "Fractional Error in Z",
+          "label_bn": "Z এ আপেক্ষিক ত্রুটি",
+          "unit": "",
+          "si_unit": ""
+        },
+        "delta_A_frac": {
+          "label": "Fractional Error in A",
+          "label_bn": "A এ আপেক্ষিক ত্রুটি",
+          "unit": "",
+          "si_unit": ""
+        },
+        "delta_B_frac": {
+          "label": "Fractional Error in B",
+          "label_bn": "B এ আপেক্ষিক ত্রুটি",
+          "unit": "",
+          "si_unit": ""
+        }
+      },
+      "solve_for": {
+        "delta_Z_frac": {
+          "expr": "delta_A_frac + delta_B_frac",
+          "solvable": true
+        },
+        "delta_A_frac": {
+          "expr": "delta_Z_frac - delta_B_frac",
+          "solvable": true
+        },
+        "delta_B_frac": {
+          "expr": "delta_Z_frac - delta_A_frac",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "delta_A_frac >= 0",
+        "delta_B_frac >= 0"
+      ],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "delta_Z_frac",
+        "delta_A_frac",
+        "delta_B_frac"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "error_power",
+      "name": "Error in Power (Z=A^n)",
+      "name_bn": "ঘাতে ত্রুটি",
+      "type": "error_propagation",
+      "chapter": "physical_world",
+      "variables": {
+        "delta_Z_frac": {
+          "label": "Fractional Error in Z",
+          "label_bn": "Z এ আপেক্ষিক ত্রুটি",
+          "unit": "",
+          "si_unit": ""
+        },
+        "delta_A_frac": {
+          "label": "Fractional Error in A",
+          "label_bn": "A এ আপেক্ষিক ত্রুটি",
+          "unit": "",
+          "si_unit": ""
+        },
+        "n": {
+          "label": "Power/Exponent",
+          "label_bn": "ঘাত/সূচক",
+          "unit": "",
+          "si_unit": ""
+        }
+      },
+      "solve_for": {
+        "delta_Z_frac": {
+          "expr": "n*delta_A_frac",
+          "solvable": true
+        },
+        "delta_A_frac": {
+          "expr": "delta_Z_frac/n",
+          "solvable": true
+        },
+        "n": {
+          "expr": "delta_Z_frac/delta_A_frac",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "delta_A_frac > 0",
+        "n != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "delta_Z_frac",
+        "delta_A_frac",
+        "n"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    }
+  ],
+  "total_formulas": 6,
+  "total_types": 3
+}

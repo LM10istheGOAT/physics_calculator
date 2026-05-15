@@ -1,0 +1,47 @@
+{
+  "chapter_id": "electromagnetic_induction",
+  "chapter_name": "Electromagnetic Induction & AC",
+  "chapter_name_bn": "তাড়িতচৌম্বকীয় আবেশ ও দিক পরিবর্তী প্রবাহ",
+  "types": [
+    {
+      "id": "faradays_law",
+      "name": "Faraday's Law",
+      "name_bn": "ফ্যারাডের সূত্র",
+      "formulas": [
+        "faraday_emf",
+        "magnetic_flux",
+        "induced_emf_motional"
+      ]
+    },
+    {
+      "id": "lenz_law",
+      "name": "Inductance",
+      "name_bn": "আবেশ",
+      "formulas": [
+        "self_inductance_emf",
+        "mutual_inductance",
+        "inductor_energy"
+      ]
+    },
+    {
+      "id": "ac_circuits",
+      "name": "AC Circuits",
+      "name_bn": "AC বর্তনী",
+      "formulas": [
+        "ac_rms",
+        "inductive_reactance",
+        "capacitive_reactance",
+        "impedance_rlc",
+        "resonant_frequency"
+      ]
+    },
+    {
+      "id": "transformer",
+      "name": "Transformer",
+      "name_bn": "ট্রান্সফরমার",
+      "formulas": [
+        "transformer_ratio"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "chapter_id": "physical_world",
+  "chapter_name": "Physical World & Measurement",
+  "chapter_name_bn": "পদার্থের ভৌত অবস্থা ও পরিমাপ",
+  "types": [
+    {
+      "id": "unit_conversion",
+      "name": "Unit Conversion",
+      "name_bn": "একক রূপান্তর",
+      "formulas": [
+        "cgs_to_si_force",
+        "cgs_to_si_energy",
+        "cgs_to_si_pressure"
+      ]
+    },
+    {
+      "id": "error_propagation",
+      "name": "Error Propagation",
+      "name_bn": "ত্রুটি বিস্তারণ",
+      "formulas": [
+        "error_addition_subtraction",
+        "error_multiplication_division",
+        "error_power"
+      ]
+    },
+    {
+      "id": "dimensional",
+      "name": "Dimensional Analysis",
+      "name_bn": "মাত্রিক বিশ্লেষণ",
+      "formulas": [
+        "dimensional_force",
+        "dimensional_energy"
+      ]
+    }
+  ]
+}

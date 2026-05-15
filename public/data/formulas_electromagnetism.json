@@ -1,0 +1,425 @@
+{
+  "chapter_id": "electromagnetism",
+  "chapter_name": "Electromagnetism",
+  "chapter_name_bn": "তড়িৎ প্রবাহের চৌম্বক ক্রিয়া ও চুম্বকত্ব",
+  "formulas": [
+    {
+      "id": "magnetic_force_lorentz",
+      "name": "Lorentz Force (Moving Charge)",
+      "name_bn": "লরেন্জ বল (গতিশীল আধান)",
+      "type": "magnetic_field",
+      "chapter": "electromagnetism",
+      "variables": {
+        "F_mag": {
+          "label": "Magnetic Force",
+          "label_bn": "চৌম্বক বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "q_mag": {
+          "label": "Charge",
+          "label_bn": "আধান",
+          "unit": "C",
+          "si_unit": "C"
+        },
+        "v_mag": {
+          "label": "Velocity",
+          "label_bn": "বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "B": {
+          "label": "Magnetic Field",
+          "label_bn": "চৌম্বক ক্ষেত্র",
+          "unit": "T",
+          "si_unit": "T"
+        },
+        "theta_mag": {
+          "label": "Angle Between v and B",
+          "label_bn": "v ও B এর মধ্যবর্তী কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "F_mag": {
+          "expr": "q_mag*v_mag*B*sin(theta_mag)",
+          "solvable": true
+        },
+        "q_mag": {
+          "expr": "F_mag/(v_mag*B*sin(theta_mag))",
+          "solvable": true
+        },
+        "v_mag": {
+          "expr": "F_mag/(q_mag*B*sin(theta_mag))",
+          "solvable": true
+        },
+        "B": {
+          "expr": "F_mag/(q_mag*v_mag*sin(theta_mag))",
+          "solvable": true
+        },
+        "theta_mag": {
+          "expr": "asin(F_mag/(q_mag*v_mag*B))",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "q_mag > 0",
+        "v_mag > 0",
+        "B > 0",
+        "F_mag <= q_mag*v_mag*B"
+      ],
+      "errors": [
+        "division_by_zero",
+        "asin_domain"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "F_mag",
+        "q_mag",
+        "v_mag",
+        "B",
+        "theta_mag"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "biot_savart",
+      "name": "Biot-Savart Law (Infinite Wire)",
+      "name_bn": "বায়ো-সাভার সূত্র",
+      "type": "magnetic_field",
+      "chapter": "electromagnetism",
+      "variables": {
+        "B_bs": {
+          "label": "Magnetic Field",
+          "label_bn": "চৌম্বক ক্ষেত্র",
+          "unit": "T",
+          "si_unit": "T"
+        },
+        "mu_0": {
+          "label": "Permeability of Free Space",
+          "label_bn": "শূন্যস্থানের ভেদ্যতা",
+          "unit": "T*m/A",
+          "si_unit": "T*m/A"
+        },
+        "I_bs": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        },
+        "r_bs": {
+          "label": "Distance from Wire",
+          "label_bn": "তার থেকে দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "B_bs": {
+          "expr": "mu_0*I_bs/(2*3.14159265359*r_bs)",
+          "solvable": true
+        },
+        "I_bs": {
+          "expr": "2*3.14159265359*r_bs*B_bs/mu_0",
+          "solvable": true
+        },
+        "r_bs": {
+          "expr": "mu_0*I_bs/(2*3.14159265359*B_bs)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "r_bs > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "B_bs",
+        "mu_0",
+        "I_bs",
+        "r_bs"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "solenoid_field",
+      "name": "Solenoid Magnetic Field",
+      "name_bn": "সোলেনয়েডের চৌম্বক ক্ষেত্র",
+      "type": "magnetic_field",
+      "chapter": "electromagnetism",
+      "variables": {
+        "B_sol": {
+          "label": "Magnetic Field Inside",
+          "label_bn": "অভ্যন্তরীণ চৌম্বক ক্ষেত্র",
+          "unit": "T",
+          "si_unit": "T"
+        },
+        "mu_0_sol": {
+          "label": "Permeability",
+          "label_bn": "ভেদ্যতা",
+          "unit": "T*m/A",
+          "si_unit": "T*m/A"
+        },
+        "n_sol": {
+          "label": "Turns per Unit Length",
+          "label_bn": "একক দৈর্ঘ্যে পাক সংখ্যা",
+          "unit": "1/m",
+          "si_unit": "1/m"
+        },
+        "I_sol": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        }
+      },
+      "solve_for": {
+        "B_sol": {
+          "expr": "mu_0_sol*n_sol*I_sol",
+          "solvable": true
+        },
+        "I_sol": {
+          "expr": "B_sol/(mu_0_sol*n_sol)",
+          "solvable": true
+        },
+        "n_sol": {
+          "expr": "B_sol/(mu_0_sol*I_sol)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "n_sol > 0",
+        "I_sol > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "B_sol",
+        "mu_0_sol",
+        "n_sol",
+        "I_sol"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "force_current_wire",
+      "name": "Force on Current-Carrying Wire",
+      "name_bn": "তড়িৎ প্রবাহিত তারে বল",
+      "type": "force_current",
+      "chapter": "electromagnetism",
+      "variables": {
+        "F_wire": {
+          "label": "Force on Wire",
+          "label_bn": "তারে বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "I_wire": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        },
+        "L_wire": {
+          "label": "Length of Wire",
+          "label_bn": "তারের দৈর্ঘ্য",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "B_wire": {
+          "label": "Magnetic Field",
+          "label_bn": "চৌম্বক ক্ষেত্র",
+          "unit": "T",
+          "si_unit": "T"
+        },
+        "theta_wire": {
+          "label": "Angle Between I and B",
+          "label_bn": "I ও B এর কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "F_wire": {
+          "expr": "I_wire*L_wire*B_wire*sin(theta_wire)",
+          "solvable": true
+        },
+        "I_wire": {
+          "expr": "F_wire/(L_wire*B_wire*sin(theta_wire))",
+          "solvable": true
+        },
+        "B_wire": {
+          "expr": "F_wire/(I_wire*L_wire*sin(theta_wire))",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "L_wire > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "F_wire",
+        "I_wire",
+        "L_wire",
+        "B_wire",
+        "theta_wire"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "force_between_wires",
+      "name": "Force Between Parallel Wires",
+      "name_bn": "সমান্তরাল তারের মধ্যে বল",
+      "type": "force_current",
+      "chapter": "electromagnetism",
+      "variables": {
+        "F_per_L": {
+          "label": "Force per Unit Length",
+          "label_bn": "একক দৈর্ঘ্যে বল",
+          "unit": "N/m",
+          "si_unit": "N/m"
+        },
+        "mu_0_w": {
+          "label": "Permeability",
+          "label_bn": "ভেদ্যতা",
+          "unit": "T*m/A",
+          "si_unit": "T*m/A"
+        },
+        "I1_w": {
+          "label": "Current in Wire 1",
+          "label_bn": "তার ১ এর তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        },
+        "I2_w": {
+          "label": "Current in Wire 2",
+          "label_bn": "তার ২ এর তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        },
+        "d_w": {
+          "label": "Distance Between Wires",
+          "label_bn": "তারদ্বয়ের দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "F_per_L": {
+          "expr": "mu_0_w*I1_w*I2_w/(2*3.14159265359*d_w)",
+          "solvable": true
+        },
+        "d_w": {
+          "expr": "mu_0_w*I1_w*I2_w/(2*3.14159265359*F_per_L)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "d_w > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "F_per_L",
+        "I1_w",
+        "I2_w",
+        "d_w"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "torque_coil",
+      "name": "Torque on Current Loop",
+      "name_bn": "তড়িৎ লুপে টর্ক",
+      "type": "torque_coil",
+      "chapter": "electromagnetism",
+      "variables": {
+        "tau": {
+          "label": "Torque",
+          "label_bn": "টর্ক",
+          "unit": "N*m",
+          "si_unit": "N*m"
+        },
+        "N_coil": {
+          "label": "Number of Turns",
+          "label_bn": "পাক সংখ্যা",
+          "unit": "",
+          "si_unit": ""
+        },
+        "I_coil": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        },
+        "A_coil": {
+          "label": "Area of Loop",
+          "label_bn": "লুপের ক্ষেত্রফল",
+          "unit": "m^2",
+          "si_unit": "m^2"
+        },
+        "B_coil": {
+          "label": "Magnetic Field",
+          "label_bn": "চৌম্বক ক্ষেত্র",
+          "unit": "T",
+          "si_unit": "T"
+        },
+        "theta_coil": {
+          "label": "Angle Between Normal and B",
+          "label_bn": "অভিলম্ব ও B এর কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "tau": {
+          "expr": "N_coil*I_coil*A_coil*B_coil*sin(theta_coil)",
+          "solvable": true
+        },
+        "I_coil": {
+          "expr": "tau/(N_coil*A_coil*B_coil*sin(theta_coil))",
+          "solvable": true
+        },
+        "B_coil": {
+          "expr": "tau/(N_coil*I_coil*A_coil*sin(theta_coil))",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "N_coil > 0",
+        "A_coil > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "tau",
+        "N_coil",
+        "I_coil",
+        "A_coil",
+        "B_coil",
+        "theta_coil"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    }
+  ],
+  "total_formulas": 6,
+  "total_types": 3
+}

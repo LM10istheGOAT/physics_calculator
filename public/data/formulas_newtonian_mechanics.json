@@ -1,0 +1,670 @@
+{
+  "chapter_id": "newtonian_mechanics",
+  "chapter_name": "Newtonian Mechanics",
+  "chapter_name_bn": "নিউটনীয় বলবিদ্যা",
+  "formulas": [
+    {
+      "id": "f_ma",
+      "name": "Newton's Second Law",
+      "name_bn": "নিউটনের দ্বিতীয় সূত্র",
+      "type": "newton_second_law",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "F": {
+          "label": "Force",
+          "label_bn": "বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "a": {
+          "label": "Acceleration",
+          "label_bn": "ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        }
+      },
+      "solve_for": {
+        "F": {
+          "expr": "m*a",
+          "solvable": true
+        },
+        "m": {
+          "expr": "F/a",
+          "solvable": true
+        },
+        "a": {
+          "expr": "F/m",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "F",
+        "m",
+        "a"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "weight_mg",
+      "name": "Weight",
+      "name_bn": "ওজন",
+      "type": "newton_second_law",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "W": {
+          "label": "Weight",
+          "label_bn": "ওজন",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        }
+      },
+      "solve_for": {
+        "W": {
+          "expr": "m*g",
+          "solvable": true
+        },
+        "m": {
+          "expr": "W/g",
+          "solvable": true
+        },
+        "g": {
+          "expr": "W/m",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0",
+        "g > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "W",
+        "m",
+        "g"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "static_friction",
+      "name": "Maximum Static Friction",
+      "name_bn": "সর্বোচ্চ স্থির ঘর্ষণ",
+      "type": "friction",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "fs_max": {
+          "label": "Max Static Friction",
+          "label_bn": "সর্বোচ্চ স্থির ঘর্ষণ বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "mu_s": {
+          "label": "Coefficient of Static Friction",
+          "label_bn": "স্থির ঘর্ষণ গুণাঙ্ক",
+          "unit": "",
+          "si_unit": ""
+        },
+        "N": {
+          "label": "Normal Force",
+          "label_bn": "প্রতিক্রিয়া বল",
+          "unit": "N",
+          "si_unit": "N"
+        }
+      },
+      "solve_for": {
+        "fs_max": {
+          "expr": "mu_s*N",
+          "solvable": true
+        },
+        "mu_s": {
+          "expr": "fs_max/N",
+          "solvable": true
+        },
+        "N": {
+          "expr": "fs_max/mu_s",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "N > 0",
+        "mu_s > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "fs_max",
+        "mu_s",
+        "N"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "kinetic_friction",
+      "name": "Kinetic Friction",
+      "name_bn": "গতিশীল ঘর্ষণ",
+      "type": "friction",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "fk": {
+          "label": "Kinetic Friction",
+          "label_bn": "গতিশীল ঘর্ষণ বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "mu_k": {
+          "label": "Coefficient of Kinetic Friction",
+          "label_bn": "গতিশীল ঘর্ষণ গুণাঙ্ক",
+          "unit": "",
+          "si_unit": ""
+        },
+        "N": {
+          "label": "Normal Force",
+          "label_bn": "প্রতিক্রিয়া বল",
+          "unit": "N",
+          "si_unit": "N"
+        }
+      },
+      "solve_for": {
+        "fk": {
+          "expr": "mu_k*N",
+          "solvable": true
+        },
+        "mu_k": {
+          "expr": "fk/N",
+          "solvable": true
+        },
+        "N": {
+          "expr": "fk/mu_k",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "N > 0",
+        "mu_k > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "fk",
+        "mu_k",
+        "N"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "friction_angle",
+      "name": "Angle of Friction",
+      "name_bn": "ঘর্ষণ কোণ",
+      "type": "friction",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "theta": {
+          "label": "Angle of Friction",
+          "label_bn": "ঘর্ষণ কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        },
+        "mu": {
+          "label": "Coefficient of Friction",
+          "label_bn": "ঘর্ষণ গুণাঙ্ক",
+          "unit": "",
+          "si_unit": ""
+        }
+      },
+      "solve_for": {
+        "theta": {
+          "expr": "atan(mu)",
+          "solvable": true
+        },
+        "mu": {
+          "expr": "tan(theta)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "mu >= 0"
+      ],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "theta",
+        "mu"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "apparent_weight_elevator_up",
+      "name": "Apparent Weight (Elevator Going Up)",
+      "name_bn": "আপাত ওজন (লিফট উপরে যাওয়া)",
+      "type": "apparent_weight",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "R": {
+          "label": "Apparent Weight / Normal Reaction",
+          "label_bn": "আপাত ওজন",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "a": {
+          "label": "Elevator Acceleration",
+          "label_bn": "লিফটের ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        }
+      },
+      "solve_for": {
+        "R": {
+          "expr": "m*(g + a)",
+          "solvable": true
+        },
+        "m": {
+          "expr": "R/(g + a)",
+          "solvable": true
+        },
+        "a": {
+          "expr": "R/m - g",
+          "solvable": true
+        },
+        "g": {
+          "expr": "R/m - a",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0",
+        "g + a > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "R",
+        "m",
+        "g",
+        "a"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "apparent_weight_elevator_down",
+      "name": "Apparent Weight (Elevator Going Down)",
+      "name_bn": "আপাত ওজন (লিফট নিচে নামা)",
+      "type": "apparent_weight",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "R": {
+          "label": "Apparent Weight / Normal Reaction",
+          "label_bn": "আপাত ওজন",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "a": {
+          "label": "Elevator Acceleration",
+          "label_bn": "লিফটের ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        }
+      },
+      "solve_for": {
+        "R": {
+          "expr": "m*(g - a)",
+          "solvable": true
+        },
+        "m": {
+          "expr": "R/(g - a)",
+          "solvable": true
+        },
+        "a": {
+          "expr": "g - R/m",
+          "solvable": true
+        },
+        "g": {
+          "expr": "R/m + a",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0",
+        "g > a"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "R",
+        "m",
+        "g",
+        "a"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "atwood_acceleration",
+      "name": "Atwood Machine Acceleration",
+      "name_bn": "অ্যাটউড মেশিনের ত্বরণ",
+      "type": "atwood_machine",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "a": {
+          "label": "Acceleration",
+          "label_bn": "ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "m1": {
+          "label": "Mass 1 (heavier)",
+          "label_bn": "ভর ১ (ভারী)",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "m2": {
+          "label": "Mass 2 (lighter)",
+          "label_bn": "ভর ২ (হালকা)",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        }
+      },
+      "solve_for": {
+        "a": {
+          "expr": "(m1 - m2)*g/(m1 + m2)",
+          "solvable": true
+        },
+        "m1": {
+          "expr": "m2*(g + a)/(g - a)",
+          "solvable": true
+        },
+        "m2": {
+          "expr": "m1*(g - a)/(g + a)",
+          "solvable": true
+        },
+        "g": {
+          "expr": "a*(m1 + m2)/(m1 - m2)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m1 > 0",
+        "m2 > 0",
+        "m1 != m2",
+        "m1 + m2 > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "a",
+        "m1",
+        "m2",
+        "g"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "atwood_tension",
+      "name": "Atwood Machine Tension",
+      "name_bn": "অ্যাটউড মেশিনের টান",
+      "type": "atwood_machine",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "T": {
+          "label": "Tension",
+          "label_bn": "টান",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "m1": {
+          "label": "Mass 1 (heavier)",
+          "label_bn": "ভর ১",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "m2": {
+          "label": "Mass 2 (lighter)",
+          "label_bn": "ভর ২",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        }
+      },
+      "solve_for": {
+        "T": {
+          "expr": "2*m1*m2*g/(m1 + m2)",
+          "solvable": true
+        },
+        "m1": {
+          "expr": "T*m2/(2*m2*g - T)",
+          "solvable": true
+        },
+        "m2": {
+          "expr": "T*m1/(2*m1*g - T)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m1 > 0",
+        "m2 > 0",
+        "2*m2*g != T",
+        "2*m1*g != T"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [
+        "atwood_acceleration"
+      ],
+      "memory_keys": [
+        "T",
+        "m1",
+        "m2",
+        "g"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "inclined_acceleration",
+      "name": "Acceleration on Inclined Plane (Frictionless)",
+      "name_bn": "নততলে ত্বরণ (ঘর্ষণহীন)",
+      "type": "inclined_plane",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "a": {
+          "label": "Acceleration",
+          "label_bn": "ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "theta": {
+          "label": "Angle of Incline",
+          "label_bn": "নতি কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "a": {
+          "expr": "g*sin(theta)",
+          "solvable": true
+        },
+        "g": {
+          "expr": "a/sin(theta)",
+          "solvable": true
+        },
+        "theta": {
+          "expr": "asin(a/g)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "g > 0",
+        "abs(a/g) <= 1"
+      ],
+      "errors": [
+        "division_by_zero",
+        "asin_domain"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "a",
+        "g",
+        "theta"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "inclined_normal",
+      "name": "Normal Force on Inclined Plane",
+      "name_bn": "নততলে প্রতিক্রিয়া বল",
+      "type": "inclined_plane",
+      "chapter": "newtonian_mechanics",
+      "variables": {
+        "N": {
+          "label": "Normal Force",
+          "label_bn": "প্রতিক্রিয়া বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "g": {
+          "label": "Gravitational Acceleration",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "theta": {
+          "label": "Angle of Incline",
+          "label_bn": "নতি কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "N": {
+          "expr": "m*g*cos(theta)",
+          "solvable": true
+        },
+        "m": {
+          "expr": "N/(g*cos(theta))",
+          "solvable": true
+        },
+        "g": {
+          "expr": "N/(m*cos(theta))",
+          "solvable": true
+        },
+        "theta": {
+          "expr": "acos(N/(m*g))",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0",
+        "g > 0",
+        "N/(m*g) <= 1"
+      ],
+      "errors": [
+        "division_by_zero",
+        "acos_domain"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "N",
+        "m",
+        "g",
+        "theta"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    }
+  ],
+  "total_formulas": 11,
+  "total_types": 5
+}
