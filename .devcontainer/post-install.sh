@@ -1,4 +1,5 @@
 #!/bin/bash
+# Post-create setup script for GitHub Codespaces
 set -e
 
 echo "🔧 Setting up Physics Calculator development environment..."
