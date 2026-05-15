@@ -17,17 +17,15 @@
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
         "bradlc.vscode-tailwindcss",
         "ms-vscode.vscode-typescript-next"
       ],
       "settings": {
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.codeActionsOnSave": {
           "source.fixAll.eslint": "explicit"
         },
-        "typescript.tsdk": "node_modules/typescript/lib",
+        "js.ts.tsdk.path": "node_modules/typescript/lib",
         "tailwindCSS.includeLanguages": {
           "typescript": "javascript",
           "typescriptreact": "javascript"
@@ -35,7 +33,6 @@
       }
     }
   },
-  "postCreateCommand": "bun install",
-  "postStartCommand": "bun run dev",
-  "remoteUser": "node"
+  "postCreateCommand": "bash .devcontainer/post-install.sh",
+  "remoteUser": "vscode"
 }
