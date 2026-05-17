@@ -1,0 +1,861 @@
+{
+  "chapter_id": "circular_motion",
+  "chapter_name": "Circular & Oscillatory Motion",
+  "chapter_name_bn": "পর্যায়বৃত্ত গতি",
+  "formulas": [
+    {
+      "id": "circ_v_omega_r",
+      "name": "Linear Velocity in Circular Motion",
+      "name_bn": "বৃত্তীয় গতিতে রৈখিক বেগ",
+      "type": "uniform_circular",
+      "chapter": "circular_motion",
+      "variables": {
+        "v": {
+          "label": "Linear Velocity",
+          "label_bn": "রৈখিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "omega": {
+          "label": "Angular Velocity",
+          "label_bn": "কৌণিক বেগ",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "r": {
+          "label": "Radius",
+          "label_bn": "ব্যাসার্ধ",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "v": {
+          "expr": "omega*r",
+          "solvable": true
+        },
+        "omega": {
+          "expr": "v/r",
+          "solvable": true
+        },
+        "r": {
+          "expr": "v/omega",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "r > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v",
+        "omega",
+        "r"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "circ_omega_2pi_f",
+      "name": "Angular Velocity from Frequency",
+      "name_bn": "কম্পাঙ্ক থেকে কৌণিক বেগ",
+      "type": "uniform_circular",
+      "chapter": "circular_motion",
+      "variables": {
+        "omega": {
+          "label": "Angular Velocity",
+          "label_bn": "কৌণিক বেগ",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "f": {
+          "label": "Frequency",
+          "label_bn": "কম্পাঙ্ক",
+          "unit": "Hz",
+          "si_unit": "Hz"
+        },
+        "T": {
+          "label": "Period",
+          "label_bn": "আবর্তনকাল",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "omega": {
+          "expr": "2*3.14159265359*f",
+          "solvable": true
+        },
+        "f": {
+          "expr": "omega/(2*3.14159265359)",
+          "solvable": true
+        },
+        "T": {
+          "expr": "2*3.14159265359/omega",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "f > 0",
+        "omega > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "omega",
+        "f",
+        "T"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "centripetal_acceleration",
+      "name": "Centripetal Acceleration",
+      "name_bn": "কেন্দ্রমুখী ত্বরণ",
+      "type": "uniform_circular",
+      "chapter": "circular_motion",
+      "variables": {
+        "a_c": {
+          "label": "Centripetal Acceleration",
+          "label_bn": "কেন্দ্রমুখী ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "v": {
+          "label": "Linear Velocity",
+          "label_bn": "রৈখিক বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "r": {
+          "label": "Radius",
+          "label_bn": "ব্যাসার্ধ",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "omega": {
+          "label": "Angular Velocity",
+          "label_bn": "কৌণিক বেগ",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        }
+      },
+      "solve_for": {
+        "a_c": {
+          "expr": "v^2/r",
+          "solvable": true
+        },
+        "v": {
+          "expr": "sqrt(a_c*r)",
+          "solvable": true
+        },
+        "r": {
+          "expr": "v^2/a_c",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "r > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "a_c",
+        "v",
+        "r"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "centripetal_force",
+      "name": "Centripetal Force",
+      "name_bn": "কেন্দ্রমুখী বল",
+      "type": "uniform_circular",
+      "chapter": "circular_motion",
+      "variables": {
+        "F_c": {
+          "label": "Centripetal Force",
+          "label_bn": "কেন্দ্রমুখী বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "v": {
+          "label": "Velocity",
+          "label_bn": "বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "r": {
+          "label": "Radius",
+          "label_bn": "ব্যাসার্ধ",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "F_c": {
+          "expr": "m*v^2/r",
+          "solvable": true
+        },
+        "m": {
+          "expr": "F_c*r/v^2",
+          "solvable": true
+        },
+        "v": {
+          "expr": "sqrt(F_c*r/m)",
+          "solvable": true
+        },
+        "r": {
+          "expr": "m*v^2/F_c",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0",
+        "r > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "F_c",
+        "m",
+        "v",
+        "r"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "angular_displacement",
+      "name": "Angular Displacement",
+      "name_bn": "কৌণিক সরণ",
+      "type": "angular_kinematics",
+      "chapter": "circular_motion",
+      "variables": {
+        "theta": {
+          "label": "Angular Displacement",
+          "label_bn": "কৌণিক সরণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        },
+        "s": {
+          "label": "Arc Length",
+          "label_bn": "চাপের দৈর্ঘ্য",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "r": {
+          "label": "Radius",
+          "label_bn": "ব্যাসার্ধ",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "theta": {
+          "expr": "s/r",
+          "solvable": true
+        },
+        "s": {
+          "expr": "theta*r",
+          "solvable": true
+        },
+        "r": {
+          "expr": "s/theta",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "r > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "theta",
+        "s",
+        "r"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "angular_velocity_time",
+      "name": "Angular Velocity Equation (ω=ω₀+αt)",
+      "name_bn": "কৌণিক বেগ সমীকরণ",
+      "type": "angular_kinematics",
+      "chapter": "circular_motion",
+      "variables": {
+        "omega": {
+          "label": "Final Angular Velocity",
+          "label_bn": "প্রান্তিক কৌণিক বেগ",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "omega0": {
+          "label": "Initial Angular Velocity",
+          "label_bn": "প্রাথমিক কৌণিক বেগ",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "alpha": {
+          "label": "Angular Acceleration",
+          "label_bn": "কৌণিক ত্বরণ",
+          "unit": "rad/s^2",
+          "si_unit": "rad/s^2"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "omega": {
+          "expr": "omega0 + alpha*t",
+          "solvable": true
+        },
+        "omega0": {
+          "expr": "omega - alpha*t",
+          "solvable": true
+        },
+        "alpha": {
+          "expr": "(omega - omega0)/t",
+          "solvable": true
+        },
+        "t": {
+          "expr": "(omega - omega0)/alpha",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "t > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "omega",
+        "omega0",
+        "alpha",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "angular_v2_u2",
+      "name": "Angular Velocity-Displacement Relation",
+      "name_bn": "কৌণিক বেগ-সরণ সম্পর্ক",
+      "type": "angular_kinematics",
+      "chapter": "circular_motion",
+      "variables": {
+        "omega2": {
+          "label": "Final Angular Velocity",
+          "label_bn": "প্রান্তিক কৌণিক বেগ",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "omega0": {
+          "label": "Initial Angular Velocity",
+          "label_bn": "প্রাথমিক কৌণিক বেগ",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "alpha": {
+          "label": "Angular Acceleration",
+          "label_bn": "কৌণিক ত্বরণ",
+          "unit": "rad/s^2",
+          "si_unit": "rad/s^2"
+        },
+        "theta": {
+          "label": "Angular Displacement",
+          "label_bn": "কৌণিক সরণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "omega2": {
+          "expr": "sqrt(omega0^2 + 2*alpha*theta)",
+          "solvable": true
+        },
+        "omega0": {
+          "expr": "sqrt(omega2^2 - 2*alpha*theta)",
+          "solvable": true
+        },
+        "alpha": {
+          "expr": "(omega2^2 - omega0^2)/(2*theta)",
+          "solvable": true
+        },
+        "theta": {
+          "expr": "(omega2^2 - omega0^2)/(2*alpha)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "theta != 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "omega2",
+        "omega0",
+        "alpha",
+        "theta"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "shm_displacement",
+      "name": "SHM Displacement",
+      "name_bn": "সরল দোলনের সরণ",
+      "type": "shm_type",
+      "chapter": "circular_motion",
+      "variables": {
+        "x": {
+          "label": "Displacement",
+          "label_bn": "সরণ",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "A": {
+          "label": "Amplitude",
+          "label_bn": "বিস্তার",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "omega": {
+          "label": "Angular Frequency",
+          "label_bn": "কৌণিক কম্পাঙ্ক",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        },
+        "phi": {
+          "label": "Phase Constant",
+          "label_bn": "দশা ধ্রুবক",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "x": {
+          "expr": "A*sin(omega*t + phi)",
+          "solvable": true
+        },
+        "A": {
+          "expr": "x/sin(omega*t + phi)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "A > 0",
+        "omega > 0"
+      ],
+      "errors": [
+        "sin_zero_division"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "x",
+        "A",
+        "omega",
+        "t",
+        "phi"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "shm_velocity",
+      "name": "SHM Velocity",
+      "name_bn": "সরল দোলনের বেগ",
+      "type": "shm_type",
+      "chapter": "circular_motion",
+      "variables": {
+        "v_shm": {
+          "label": "SHM Velocity",
+          "label_bn": "সরল দোলনের বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "A": {
+          "label": "Amplitude",
+          "label_bn": "বিস্তার",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "omega": {
+          "label": "Angular Frequency",
+          "label_bn": "কৌণিক কম্পাঙ্ক",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "x": {
+          "label": "Displacement",
+          "label_bn": "সরণ",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "v_shm": {
+          "expr": "omega*sqrt(A^2 - x^2)",
+          "solvable": true
+        },
+        "A": {
+          "expr": "sqrt(x^2 + (v_shm/omega)^2)",
+          "solvable": true
+        },
+        "x": {
+          "expr": "sqrt(A^2 - (v_shm/omega)^2)",
+          "solvable": true
+        },
+        "omega": {
+          "expr": "v_shm/sqrt(A^2 - x^2)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "A >= abs(x)",
+        "A > 0"
+      ],
+      "errors": [
+        "negative_sqrt",
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v_shm",
+        "A",
+        "omega",
+        "x"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "shm_acceleration",
+      "name": "SHM Acceleration",
+      "name_bn": "সরল দোলনের ত্বরণ",
+      "type": "shm_type",
+      "chapter": "circular_motion",
+      "variables": {
+        "a_shm": {
+          "label": "SHM Acceleration",
+          "label_bn": "সরল দোলনের ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        },
+        "omega": {
+          "label": "Angular Frequency",
+          "label_bn": "কৌণিক কম্পাঙ্ক",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "x": {
+          "label": "Displacement",
+          "label_bn": "সরণ",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "a_shm": {
+          "expr": "omega^2*x",
+          "solvable": true
+        },
+        "x": {
+          "expr": "a_shm/omega^2",
+          "solvable": true
+        },
+        "omega": {
+          "expr": "sqrt(a_shm/x)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "omega > 0",
+        "x != 0 for omega solve"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "a_shm",
+        "omega",
+        "x"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "shm_period_spring",
+      "name": "SHM Period (Spring-Mass)",
+      "name_bn": "সরল দোলনের আবর্তকাল (স্প্রিং-ভর)",
+      "type": "shm_type",
+      "chapter": "circular_motion",
+      "variables": {
+        "T": {
+          "label": "Period",
+          "label_bn": "আবর্তকাল",
+          "unit": "s",
+          "si_unit": "s"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "k": {
+          "label": "Spring Constant",
+          "label_bn": "দৃঢ়তা গুণাঙ্ক",
+          "unit": "N/m",
+          "si_unit": "N/m"
+        }
+      },
+      "solve_for": {
+        "T": {
+          "expr": "2*3.14159265359*sqrt(m/k)",
+          "solvable": true
+        },
+        "m": {
+          "expr": "k*(T/(2*3.14159265359))^2",
+          "solvable": true
+        },
+        "k": {
+          "expr": "m*(2*3.14159265359/T)^2",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0",
+        "k > 0",
+        "T > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "T",
+        "m",
+        "k"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "shm_period_pendulum",
+      "name": "SHM Period (Simple Pendulum)",
+      "name_bn": "সরল দোলনের আবর্তকাল (সরল দোলক)",
+      "type": "shm_type",
+      "chapter": "circular_motion",
+      "variables": {
+        "T": {
+          "label": "Period",
+          "label_bn": "আবর্তকাল",
+          "unit": "s",
+          "si_unit": "s"
+        },
+        "L": {
+          "label": "Pendulum Length",
+          "label_bn": "দোলকের দৈর্ঘ্য",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "g": {
+          "label": "Gravity",
+          "label_bn": "অভিকর্ষজ ত্বরণ",
+          "unit": "m/s^2",
+          "si_unit": "m/s^2"
+        }
+      },
+      "solve_for": {
+        "T": {
+          "expr": "2*3.14159265359*sqrt(L/g)",
+          "solvable": true
+        },
+        "L": {
+          "expr": "g*(T/(2*3.14159265359))^2",
+          "solvable": true
+        },
+        "g": {
+          "expr": "L*(2*3.14159265359/T)^2",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "L > 0",
+        "g > 0",
+        "T > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "T",
+        "L",
+        "g"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "shm_total_energy",
+      "name": "SHM Total Energy",
+      "name_bn": "সরল দোলনের মোট শক্তি",
+      "type": "shm_type",
+      "chapter": "circular_motion",
+      "variables": {
+        "E": {
+          "label": "Total Energy",
+          "label_bn": "মোট শক্তি",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "k": {
+          "label": "Spring Constant",
+          "label_bn": "দৃঢ়তা গুণাঙ্ক",
+          "unit": "N/m",
+          "si_unit": "N/m"
+        },
+        "A": {
+          "label": "Amplitude",
+          "label_bn": "বিস্তার",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "E": {
+          "expr": "0.5*k*A^2",
+          "solvable": true
+        },
+        "k": {
+          "expr": "2*E/A^2",
+          "solvable": true
+        },
+        "A": {
+          "expr": "sqrt(2*E/k)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "k > 0",
+        "A > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "E",
+        "k",
+        "A"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "spring_vertical_period",
+      "name": "Vertical Spring Period",
+      "name_bn": "উল্লম্ব স্প্রিং আবর্তকাল",
+      "type": "vertical_oscillation",
+      "chapter": "circular_motion",
+      "variables": {
+        "T": {
+          "label": "Period",
+          "label_bn": "আবর্তকাল",
+          "unit": "s",
+          "si_unit": "s"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "k": {
+          "label": "Spring Constant",
+          "label_bn": "দৃঢ়তা গুণাঙ্ক",
+          "unit": "N/m",
+          "si_unit": "N/m"
+        }
+      },
+      "solve_for": {
+        "T": {
+          "expr": "2*3.14159265359*sqrt(m/k)",
+          "solvable": true
+        },
+        "m": {
+          "expr": "k*(T/(2*3.14159265359))^2",
+          "solvable": true
+        },
+        "k": {
+          "expr": "m*(2*3.14159265359/T)^2",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0",
+        "k > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [
+        "shm_period_spring"
+      ],
+      "memory_keys": [
+        "T",
+        "m",
+        "k"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    }
+  ],
+  "total_formulas": 14,
+  "total_types": 4
+}

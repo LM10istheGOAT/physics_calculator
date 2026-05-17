@@ -1,0 +1,47 @@
+{
+  "chapter_id": "kinematics",
+  "chapter_name": "Kinematics",
+  "chapter_name_bn": "গতিবিদ্যা",
+  "types": [
+    {
+      "id": "kinematics_linear",
+      "name": "Linear Kinematics",
+      "name_bn": "সরলরেখীয় গতিবিদ্যা",
+      "formulas": [
+        "eq_v_u_at",
+        "eq_s_ut_half_at2",
+        "eq_v2_u2_2as",
+        "eq_s_half_v_plus_u_t"
+      ]
+    },
+    {
+      "id": "kinematics_freefall",
+      "name": "Free Fall",
+      "name_bn": "মুক্ত পতন",
+      "formulas": [
+        "freefall_v_gt",
+        "freefall_h_half_gt2",
+        "freefall_v2_2gh"
+      ]
+    },
+    {
+      "id": "kinematics_average",
+      "name": "Average Velocity & Speed",
+      "name_bn": "গড় বেগ ও গড় দ্রুতি",
+      "formulas": [
+        "avg_velocity",
+        "avg_speed",
+        "displacement_from_velocity"
+      ]
+    },
+    {
+      "id": "kinematics_graphical",
+      "name": "Graphical Analysis",
+      "name_bn": "লেখচিত্র বিশ্লেষণ",
+      "formulas": [
+        "distance_vt_area",
+        "acceleration_vt_slope"
+      ]
+    }
+  ]
+}

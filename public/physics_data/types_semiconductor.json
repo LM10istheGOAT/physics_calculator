@@ -1,0 +1,34 @@
+{
+  "chapter_id": "semiconductor",
+  "chapter_name": "Semiconductor & Electronics",
+  "chapter_name_bn": "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স",
+  "types": [
+    {
+      "id": "semiconductor_basic",
+      "name": "Semiconductor Basics",
+      "name_bn": "অর্ধপরিবাহী মৌলিক",
+      "formulas": [
+        "intrinsic_carrier",
+        "conductivity_semiconductor"
+      ]
+    },
+    {
+      "id": "diode",
+      "name": "Diode Circuits",
+      "name_bn": "ডায়োড বর্তনী",
+      "formulas": [
+        "diode_current"
+      ]
+    },
+    {
+      "id": "transistor",
+      "name": "Transistor",
+      "name_bn": "ট্রানজিস্টর",
+      "formulas": [
+        "transistor_alpha",
+        "transistor_beta",
+        "transistor_ie"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+[install]
+# Use Bun's global cache for faster installs
+cache = true
+
+[run]
+# Enable Bun's shell for scripts
+shell = "bun"

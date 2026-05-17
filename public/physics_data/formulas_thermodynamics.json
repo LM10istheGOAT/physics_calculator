@@ -1,0 +1,572 @@
+{
+  "chapter_id": "thermodynamics",
+  "chapter_name": "Thermodynamics",
+  "chapter_name_bn": "তাপগতিবিদ্যা",
+  "formulas": [
+    {
+      "id": "heat_conduction",
+      "name": "Heat Conduction",
+      "name_bn": "তাপ পরিবহন",
+      "type": "heat_transfer",
+      "chapter": "thermodynamics",
+      "variables": {
+        "Q": {
+          "label": "Heat Transferred",
+          "label_bn": "সঞ্চালিত তাপ",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "k_th": {
+          "label": "Thermal Conductivity",
+          "label_bn": "তাপ পরিবহন গুণাঙ্ক",
+          "unit": "W/(m*K)",
+          "si_unit": "W/(m*K)"
+        },
+        "A": {
+          "label": "Cross-Section Area",
+          "label_bn": "প্রস্থচ্ছেদের ক্ষেত্রফল",
+          "unit": "m^2",
+          "si_unit": "m^2"
+        },
+        "dT": {
+          "label": "Temperature Difference",
+          "label_bn": "তাপমাত্রা পার্থক্য",
+          "unit": "K",
+          "si_unit": "K"
+        },
+        "d": {
+          "label": "Thickness",
+          "label_bn": "পুরুত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "t": {
+          "label": "Time",
+          "label_bn": "সময়",
+          "unit": "s",
+          "si_unit": "s"
+        }
+      },
+      "solve_for": {
+        "Q": {
+          "expr": "k_th*A*dT*t/d",
+          "solvable": true
+        },
+        "k_th": {
+          "expr": "Q*d/(A*dT*t)",
+          "solvable": true
+        },
+        "t": {
+          "expr": "Q*d/(k_th*A*dT)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "A > 0",
+        "d > 0",
+        "t > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "Q",
+        "k_th",
+        "A",
+        "dT",
+        "d",
+        "t"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "heat_capacity",
+      "name": "Heat Capacity (Q=mcΔT)",
+      "name_bn": "তাপ ধারকত্ব",
+      "type": "heat_transfer",
+      "chapter": "thermodynamics",
+      "variables": {
+        "Q": {
+          "label": "Heat",
+          "label_bn": "তাপ",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "c": {
+          "label": "Specific Heat",
+          "label_bn": "আপেক্ষিক তাপ",
+          "unit": "J/(kg*K)",
+          "si_unit": "J/(kg*K)"
+        },
+        "delta_T": {
+          "label": "Temperature Change",
+          "label_bn": "তাপমাত্রা পরিবর্তন",
+          "unit": "K",
+          "si_unit": "K"
+        }
+      },
+      "solve_for": {
+        "Q": {
+          "expr": "m*c*delta_T",
+          "solvable": true
+        },
+        "m": {
+          "expr": "Q/(c*delta_T)",
+          "solvable": true
+        },
+        "c": {
+          "expr": "Q/(m*delta_T)",
+          "solvable": true
+        },
+        "delta_T": {
+          "expr": "Q/(m*c)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0",
+        "c > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "Q",
+        "m",
+        "c",
+        "delta_T"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "latent_heat",
+      "name": "Latent Heat (Q=mL)",
+      "name_bn": "গুপ্ত তাপ",
+      "type": "heat_transfer",
+      "chapter": "thermodynamics",
+      "variables": {
+        "Q": {
+          "label": "Heat",
+          "label_bn": "তাপ",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "m": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "L": {
+          "label": "Latent Heat",
+          "label_bn": "গুপ্ত তাপ",
+          "unit": "J/kg",
+          "si_unit": "J/kg"
+        }
+      },
+      "solve_for": {
+        "Q": {
+          "expr": "m*L",
+          "solvable": true
+        },
+        "m": {
+          "expr": "Q/L",
+          "solvable": true
+        },
+        "L": {
+          "expr": "Q/m",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "m > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "Q",
+        "m",
+        "L"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "first_law_thermo",
+      "name": "First Law of Thermodynamics",
+      "name_bn": "তাপগতিবিদ্যার প্রথম সূত্র",
+      "type": "first_law",
+      "chapter": "thermodynamics",
+      "variables": {
+        "dU": {
+          "label": "Change in Internal Energy",
+          "label_bn": "অভ্যন্তরীণ শক্তি পরিবর্তন",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "Q": {
+          "label": "Heat Added",
+          "label_bn": "গৃহীত তাপ",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "W": {
+          "label": "Work Done by System",
+          "label_bn": "সিস্টেমের কৃতকার্য",
+          "unit": "J",
+          "si_unit": "J"
+        }
+      },
+      "solve_for": {
+        "dU": {
+          "expr": "Q - W",
+          "solvable": true
+        },
+        "Q": {
+          "expr": "dU + W",
+          "solvable": true
+        },
+        "W": {
+          "expr": "Q - dU",
+          "solvable": true
+        }
+      },
+      "constraints": [],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "dU",
+        "Q",
+        "W"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "isothermal_work",
+      "name": "Isothermal Work (Ideal Gas)",
+      "name_bn": "সমতাপীয় কাজ",
+      "type": "thermo_processes",
+      "chapter": "thermodynamics",
+      "variables": {
+        "W": {
+          "label": "Work Done",
+          "label_bn": "কৃতকার্য",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "n": {
+          "label": "Moles",
+          "label_bn": "মোল সংখ্যা",
+          "unit": "mol",
+          "si_unit": "mol"
+        },
+        "R": {
+          "label": "Gas Constant",
+          "label_bn": "গ্যাস ধ্রুবক",
+          "unit": "J/(mol*K)",
+          "si_unit": "J/(mol*K)"
+        },
+        "T": {
+          "label": "Temperature",
+          "label_bn": "তাপমাত্রা",
+          "unit": "K",
+          "si_unit": "K"
+        },
+        "V2": {
+          "label": "Final Volume",
+          "label_bn": "প্রান্তিক আয়তন",
+          "unit": "m^3",
+          "si_unit": "m^3"
+        },
+        "V1": {
+          "label": "Initial Volume",
+          "label_bn": "প্রাথমিক আয়তন",
+          "unit": "m^3",
+          "si_unit": "m^3"
+        }
+      },
+      "solve_for": {
+        "W": {
+          "expr": "n*R*T*log(V2/V1)",
+          "solvable": true
+        },
+        "T": {
+          "expr": "W/(n*R*log(V2/V1))",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "V2 > 0",
+        "V1 > 0",
+        "T > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "log_domain"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "W",
+        "n",
+        "R",
+        "T",
+        "V2",
+        "V1"
+      ],
+      "category": "logarithmic",
+      "difficulty": "advanced"
+    },
+    {
+      "id": "adiabatic_relation",
+      "name": "Adiabatic Relation (PV^γ)",
+      "name_bn": "রুদ্ধতাপীয় সম্পর্ক",
+      "type": "thermo_processes",
+      "chapter": "thermodynamics",
+      "variables": {
+        "P1": {
+          "label": "Initial Pressure",
+          "label_bn": "প্রাথমিক চাপ",
+          "unit": "Pa",
+          "si_unit": "Pa"
+        },
+        "V1": {
+          "label": "Initial Volume",
+          "label_bn": "প্রাথমিক আয়তন",
+          "unit": "m^3",
+          "si_unit": "m^3"
+        },
+        "P2": {
+          "label": "Final Pressure",
+          "label_bn": "প্রান্তিক চাপ",
+          "unit": "Pa",
+          "si_unit": "Pa"
+        },
+        "V2": {
+          "label": "Final Volume",
+          "label_bn": "প্রান্তিক আয়তন",
+          "unit": "m^3",
+          "si_unit": "m^3"
+        },
+        "gamma": {
+          "label": "Heat Capacity Ratio",
+          "label_bn": "তাপ ধারকত্ব অনুপাত",
+          "unit": "",
+          "si_unit": ""
+        }
+      },
+      "solve_for": {
+        "P2": {
+          "expr": "P1*(V1/V2)^gamma",
+          "solvable": true
+        },
+        "P1": {
+          "expr": "P2*(V2/V1)^gamma",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "V1 > 0",
+        "V2 > 0",
+        "gamma > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "P1",
+        "V1",
+        "P2",
+        "V2",
+        "gamma"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "isobaric_work",
+      "name": "Isobaric Work",
+      "name_bn": "সমচাপীয় কাজ",
+      "type": "thermo_processes",
+      "chapter": "thermodynamics",
+      "variables": {
+        "W": {
+          "label": "Work Done",
+          "label_bn": "কৃতকার্য",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "P": {
+          "label": "Constant Pressure",
+          "label_bn": "ধ্রুব চাপ",
+          "unit": "Pa",
+          "si_unit": "Pa"
+        },
+        "delta_V": {
+          "label": "Volume Change",
+          "label_bn": "আয়তন পরিবর্তন",
+          "unit": "m^3",
+          "si_unit": "m^3"
+        }
+      },
+      "solve_for": {
+        "W": {
+          "expr": "P*delta_V",
+          "solvable": true
+        },
+        "P": {
+          "expr": "W/delta_V",
+          "solvable": true
+        },
+        "delta_V": {
+          "expr": "W/P",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "P > 0",
+        "delta_V != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "W",
+        "P",
+        "delta_V"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "carnot_efficiency",
+      "name": "Carnot Efficiency",
+      "name_bn": "কার্নো দক্ষতা",
+      "type": "efficiency",
+      "chapter": "thermodynamics",
+      "variables": {
+        "eta": {
+          "label": "Efficiency",
+          "label_bn": "দক্ষতা",
+          "unit": "",
+          "si_unit": ""
+        },
+        "T_H": {
+          "label": "Hot Reservoir Temperature",
+          "label_bn": "উষ্ণ উৎসের তাপমাত্রা",
+          "unit": "K",
+          "si_unit": "K"
+        },
+        "T_C": {
+          "label": "Cold Reservoir Temperature",
+          "label_bn": "শীতল উৎসের তাপমাত্রা",
+          "unit": "K",
+          "si_unit": "K"
+        }
+      },
+      "solve_for": {
+        "eta": {
+          "expr": "1 - T_C/T_H",
+          "solvable": true
+        },
+        "T_C": {
+          "expr": "T_H*(1 - eta)",
+          "solvable": true
+        },
+        "T_H": {
+          "expr": "T_C/(1 - eta)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "T_H > T_C",
+        "T_H > 0",
+        "T_C > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "eta",
+        "T_H",
+        "T_C"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "heat_engine_efficiency",
+      "name": "Heat Engine Efficiency",
+      "name_bn": "তাপ ইঞ্জিনের দক্ষতা",
+      "type": "efficiency",
+      "chapter": "thermodynamics",
+      "variables": {
+        "eta": {
+          "label": "Efficiency",
+          "label_bn": "দক্ষতা",
+          "unit": "",
+          "si_unit": ""
+        },
+        "W": {
+          "label": "Work Output",
+          "label_bn": "কাজের ফলাফল",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "Q_H": {
+          "label": "Heat Input",
+          "label_bn": "গৃহীত তাপ",
+          "unit": "J",
+          "si_unit": "J"
+        }
+      },
+      "solve_for": {
+        "eta": {
+          "expr": "W/Q_H",
+          "solvable": true
+        },
+        "W": {
+          "expr": "eta*Q_H",
+          "solvable": true
+        },
+        "Q_H": {
+          "expr": "W/eta",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "Q_H > 0",
+        "eta >= 0",
+        "eta <= 1"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "eta",
+        "W",
+        "Q_H"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    }
+  ],
+  "total_formulas": 9,
+  "total_types": 4
+}

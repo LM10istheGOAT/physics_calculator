@@ -1,351 +1,361 @@
-import { evaluate } from "mathjs";
+import { evaluate } from 'mathjs';
 
-export interface SolveResult {
+export interface VariableInfo {
+  label: string;
+  label_bn?: string;
+  unit: string;
+  si_unit: string;
+}
+
+export interface SolveForEntry {
+  expr: string;
+  solvable: boolean;
+}
+
+export interface Formula {
+  id: string;
+  name: string;
+  name_bn?: string;
+  type: string;
+  chapter: string;
+  variables: Record<string, VariableInfo>;
+  solve_for: Record<string, SolveForEntry>;
+  constraints: string[];
+  errors: string[];
+  depends_on: string[];
+  memory_keys: string[];
+  category: string;
+  difficulty: string;
+}
+
+export interface TypeInfo {
+  id: string;
+  name: string;
+  name_bn?: string;
+  formulas: string[];
+}
+
+export interface TypesFile {
+  chapter_id: string;
+  chapter_name: string;
+  chapter_name_bn?: string;
+  types: TypeInfo[];
+}
+
+export interface ChapterInfo {
+  id: string;
+  name: string;
+  name_bn?: string;
+  order: number;
+  types: string[];
+  formula_count: number;
+  type_count: number;
+}
+
+export interface ChaptersIndex {
+  version: string;
+  description: string;
+  total_chapters: number;
+  total_formulas: number;
+  chapters: ChapterInfo[];
+}
+
+export interface VariableGlobal {
+  label: string;
+  label_bn?: string;
+  unit: string;
+  si_unit: string;
+  used_in_chapters: string[];
+  used_in_formulas: string[];
+  total_uses: number;
+}
+
+export interface VariablesGlobalFile {
+  version: string;
+  description: string;
+  total_variables: number;
+  variables: Record<string, VariableGlobal>;
+}
+
+export interface CalcResult {
   success: boolean;
   value?: number;
+  error?: string;
   variable?: string;
   unit?: string;
-  error?: string;
-  constraintsViolated?: string[];
+}
+
+// Cache for loaded data
+const cache: Record<string, unknown> = {};
+
+async function fetchJSON<T>(url: string): Promise<T> {
+  if (cache[url]) return cache[url] as T;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
+  const data = await res.json();
+  cache[url] = data;
+  return data as T;
+}
+
+// --- Data Loaders (lazy) ---
+
+export async function loadChaptersIndex(): Promise<ChaptersIndex> {
+  return fetchJSON<ChaptersIndex>('/physics_data/chapters_index.json');
+}
+
+export async function loadTypesForChapter(chapterId: string): Promise<TypesFile> {
+  return fetchJSON<TypesFile>(`/physics_data/types_${chapterId}.json`);
+}
+
+export async function loadFormulasForChapter(chapterId: string): Promise<{ formulas: Formula[]; total_formulas: number }> {
+  return fetchJSON<{ formulas: Formula[]; total_formulas: number }>(`/physics_data/formulas_${chapterId}.json`);
+}
+
+export async function loadAllFormulas(): Promise<{ formulas: Formula[]; total_formulas: number }> {
+  return fetchJSON<{ formulas: Formula[]; total_formulas: number }>('/physics_data/formulas_all.json');
+}
+
+export async function loadVariablesGlobal(): Promise<VariablesGlobalFile> {
+  return fetchJSON<VariablesGlobalFile>('/physics_data/variables_global.json');
+}
+
+// --- Formula Solver ---
+
+/**
+ * Pre-process expression: replace ^ with ** for exponentiation,
+ * and ensure math.js compatible syntax
+ */
+function preprocessExpression(expr: string): string {
+  // math.js uses ^ for exponentiation natively, so no conversion needed
+  // But we need to handle implicit multiplication like 2x -> 2*x
+  let processed = expr.trim();
+
+  // Handle implicit multiplication: number followed by variable
+  // e.g., 2Ax -> 2*Ax, 3.14R -> 3.14*R
+  processed = processed.replace(/(\d)([A-Za-z])/g, '$1*$2');
+
+  // Handle closing paren followed by variable or number
+  processed = processed.replace(/\)([A-Za-z0-9])/g, ')*$1');
+
+  // Handle variable followed by opening paren
+  processed = processed.replace(/([A-Za-z0-9])\(/g, '$1*(');
+
+  return processed;
 }
 
 /**
- * Solve a formula for a specific variable given the other values.
+ * Substitute variables in expression with their numeric values
  */
-export function solveFormula(
-  solveExpr: string,
-  solveFor: string,
-  variableValues: Record<string, string>,
-  allVariables: Record<string, { label: string; unit: string; si_unit: string }>,
-  constraints: string[]
-): SolveResult {
-  try {
-    const scope: Record<string, number> = {};
+function substituteVariables(expr: string, values: Record<string, number>): string {
+  let result = expr;
 
-    for (const [varName, rawValue] of Object.entries(variableValues)) {
-      if (varName === solveFor) continue;
-      const trimmed = rawValue.trim();
-      if (trimmed === "") continue;
+  // Sort variable names by length (longest first) to avoid partial replacements
+  const sortedKeys = Object.keys(values).sort((a, b) => b.length - a.length);
 
-      try {
-        scope[varName] = evaluate(trimmed) as number;
-      } catch {
-        return { success: false, error: `Invalid value for ${varName}: "${trimmed}"` };
-      }
-
-      if (typeof scope[varName] !== "number" || !isFinite(scope[varName])) {
-        return { success: false, error: `Non-numeric value for ${varName}: "${trimmed}"` };
-      }
-    }
-
-    const requiredVars = Object.keys(allVariables).filter((v) => v !== solveFor);
-    const missing = requiredVars.filter((v) => !(v in scope));
-    if (missing.length > 0) {
-      return { success: false, error: `Missing values for: ${missing.join(", ")}` };
-    }
-
-    let result: number;
-    try {
-      result = evaluate(solveExpr, scope) as number;
-    } catch (err: any) {
-      return { success: false, error: `Calculation error: ${err.message || "Could not evaluate expression"}` };
-    }
-
-    if (typeof result !== "number" || !isFinite(result)) {
-      return { success: false, error: "Result is not a valid number (division by zero or overflow?)" };
-    }
-
-    const violated: string[] = [];
-    for (const constraint of constraints) {
-      try {
-        const constraintScope = { ...scope, [solveFor]: result };
-        const valid = evaluate(constraint, constraintScope);
-        if (!valid) violated.push(constraint);
-      } catch {
-        // Skip constraints that can't be evaluated
-      }
-    }
-
-    const unit = allVariables[solveFor]?.si_unit || allVariables[solveFor]?.unit || "";
-
-    return {
-      success: true,
-      value: result,
-      variable: solveFor,
-      unit,
-      constraintsViolated: violated.length > 0 ? violated : undefined,
-    };
-  } catch (err: any) {
-    return { success: false, error: `Unexpected error: ${err.message || "Unknown error"}` };
-  }
-}
-
-// ─── LaTeX Conversion ────────────────────────────────────────────────────────
-
-/**
- * Tokenize a math expression into variable names, operators, numbers, and functions.
- */
-function tokenize(expr: string): string[] {
-  const tokens: string[] = [];
-  let i = 0;
-
-  while (i < expr.length) {
-    const ch = expr[i];
-
-    if (/\s/.test(ch)) { i++; continue; }
-
-    if (ch === "(" || ch === ")") { tokens.push(ch); i++; continue; }
-
-    if (["+", "-", "*", "/", "^", ","].includes(ch)) { tokens.push(ch); i++; continue; }
-
-    if (/[0-9.]/.test(ch)) {
-      let num = "";
-      while (i < expr.length && /[0-9.eE]/.test(expr[i])) { num += expr[i]; i++; }
-      tokens.push(num);
-      continue;
-    }
-
-    if (/[a-zA-Z_]/.test(ch)) {
-      let ident = "";
-      while (i < expr.length && /[a-zA-Z0-9_]/.test(expr[i])) { ident += expr[i]; i++; }
-      tokens.push(ident);
-      continue;
-    }
-
-    i++;
-  }
-
-  return tokens;
-}
-
-/**
- * Convert a variable name to LaTeX-friendly format.
- * v_rel → v_{rel}, L0 → L_{0}, KE_max → KE_{max}, lambda_db → \lambda_{db}
- */
-function varToLatex(name: string): string {
-  const singleGreek: Record<string, string> = {
-    alpha: "\\alpha", beta: "\\beta", gamma: "\\gamma", delta: "\\delta",
-    epsilon: "\\epsilon", theta: "\\theta", lambda: "\\lambda", mu: "\\mu",
-    sigma: "\\sigma", omega: "\\omega", pi: "\\pi", rho: "\\rho",
-    tau: "\\tau", phi: "\\phi", psi: "\\psi", eta: "\\eta", nu: "\\nu",
-  };
-
-  // Split on underscore to get base + subscript
-  if (name.includes("_")) {
-    const parts = name.split("_");
-    const base = parts[0];
-    const sub = parts.slice(1).join("_");
-    const latexBase = singleGreek[base.toLowerCase()] || base;
-    const latexSub = varToLatex(sub);
-    return `${latexBase}_{${latexSub}}`;
-  }
-
-  // Trailing digits: L0 → L_{0}
-  const match = name.match(/^([a-zA-Z]+?)(\d+)$/);
-  if (match) {
-    const base = match[1];
-    const num = match[2];
-    const latexBase = singleGreek[base.toLowerCase()] || base;
-    return `${latexBase}_{${num}}`;
-  }
-
-  if (singleGreek[name.toLowerCase()]) {
-    return singleGreek[name.toLowerCase()];
-  }
-
-  return name;
-}
-
-/**
- * Read a single "atom" from the token stream starting at position i.
- * An atom is: a number, a variable, a function+parens, or a parenthesized group.
- * Also consumes trailing ^exponent if present.
- * Returns [atomLatex, nextIndex].
- */
-function readAtom(tokens: string[], i: number): [string, number] {
-  if (i >= tokens.length) return ["", i];
-
-  const token = tokens[i];
-  const funcNames = ["sqrt", "sin", "cos", "tan", "log", "ln", "exp", "abs"];
-
-  // Function call: func(...)
-  if (funcNames.includes(token) && i + 1 < tokens.length && tokens[i + 1] === "(") {
-    // Find matching close paren
-    let depth = 1;
-    let j = i + 2;
-    const innerTokens: string[] = [];
-    while (j < tokens.length && depth > 0) {
-      if (tokens[j] === "(") depth++;
-      if (tokens[j] === ")") depth--;
-      if (depth > 0) innerTokens.push(tokens[j]);
-      j++;
-    }
-
-    const innerExpr = innerTokens.join("");
-    const innerLatex = exprToLatex(innerExpr);
-
-    let atomLatex: string;
-    if (token === "sqrt") {
-      atomLatex = `\\sqrt{${innerLatex}}`;
-    } else if (token === "abs") {
-      atomLatex = `\\left|${innerLatex}\\right|`;
-    } else {
-      atomLatex = `\\${token}{${innerLatex}}`;
-    }
-
-    // Check for trailing exponent
-    if (j < tokens.length && tokens[j] === "^") {
-      const expLatex = tokens[j + 1] || "";
-      atomLatex += `^{${/^[0-9.]+$/.test(expLatex) ? expLatex : varToLatex(expLatex)}}`;
-      j += 2;
-    }
-
-    return [atomLatex, j];
-  }
-
-  // Parenthesized group: (...)
-  if (token === "(") {
-    let depth = 1;
-    let j = i + 1;
-    const innerTokens: string[] = [];
-    while (j < tokens.length && depth > 0) {
-      if (tokens[j] === "(") depth++;
-      if (tokens[j] === ")") depth--;
-      if (depth > 0) innerTokens.push(tokens[j]);
-      j++;
-    }
-
-    const innerExpr = innerTokens.join("");
-    const innerLatex = exprToLatex(innerExpr);
-    let atomLatex = `\\left(${innerLatex}\\right)`;
-
-    // Check for trailing exponent: (expr)^2
-    if (j < tokens.length && tokens[j] === "^") {
-      const expLatex = tokens[j + 1] || "";
-      atomLatex += `^{${/^[0-9.]+$/.test(expLatex) ? expLatex : varToLatex(expLatex)}}`;
-      j += 2;
-    }
-
-    return [atomLatex, j];
-  }
-
-  // Number
-  if (/^[0-9.]/.test(token)) {
-    let atomLatex = token;
-    let nextI = i + 1;
-    // Check for trailing exponent
-    if (nextI < tokens.length && tokens[nextI] === "^") {
-      const expLatex = tokens[nextI + 1] || "";
-      atomLatex += `^{${/^[0-9.]+$/.test(expLatex) ? expLatex : varToLatex(expLatex)}}`;
-      nextI += 2;
-    }
-    return [atomLatex, nextI];
-  }
-
-  // Variable
-  let atomLatex = varToLatex(token);
-  let nextI = i + 1;
-  // Check for trailing exponent
-  if (nextI < tokens.length && tokens[nextI] === "^") {
-    const expLatex = tokens[nextI + 1] || "";
-    atomLatex += `^{${/^[0-9.]+$/.test(expLatex) ? expLatex : varToLatex(expLatex)}}`;
-    nextI += 2;
-  }
-  return [atomLatex, nextI];
-}
-
-/**
- * Parse a "term" — a sequence of atoms connected by * and /.
- * Handles fractions by reading numerator and denominator atoms properly.
- */
-function parseTerm(tokens: string[], i: number): [string, number] {
-  let [left, nextI] = readAtom(tokens, i);
-  let parts: string[] = [left];
-
-  while (nextI < tokens.length) {
-    const op = tokens[nextI];
-
-    if (op === "*") {
-      nextI++;
-      const [right, afterRight] = readAtom(tokens, nextI);
-      parts.push(" \\cdot ", right);
-      nextI = afterRight;
-    } else if (op === "/") {
-      nextI++;
-      const [right, afterRight] = readAtom(tokens, nextI);
-
-      // Merge numerator from parts, create a fraction
-      const numerator = parts.join("");
-      parts = [`\\frac{${numerator}}{${right}}`];
-      nextI = afterRight;
-    } else {
-      // Not * or / — end of term
-      break;
-    }
-  }
-
-  return [parts.join(""), nextI];
-}
-
-/**
- * Convert a math expression string to proper LaTeX for KaTeX rendering.
- * Uses a proper recursive descent parser to handle precedence:
- *   - Addition/subtraction (lowest precedence)
- *   - Multiplication/division
- *   - Exponents
- *   - Atoms (numbers, variables, functions, parenthesized groups)
- */
-export function exprToLatex(expr: string, solveFor?: string): string {
-  const tokens = tokenize(expr);
-  if (tokens.length === 0) return "";
-
-  const parts: string[] = [];
-  let i = 0;
-
-  // Parse as a sum of terms
-  while (i < tokens.length) {
-    const token = tokens[i];
-
-    if (token === "+") {
-      parts.push(" + ");
-      i++;
-    } else if (token === "-") {
-      // Check if unary minus
-      if (parts.length === 0 || tokens[i - 1] === "(" || tokens[i - 1] === "+" || tokens[i - 1] === "-" || tokens[i - 1] === "*" || tokens[i - 1] === "/") {
-        i++;
-        const [termLatex, nextI] = parseTerm(tokens, i);
-        parts.push(`- ${termLatex}`);
-        i = nextI;
-      } else {
-        parts.push(" - ");
-        i++;
-      }
-    } else {
-      const [termLatex, nextI] = parseTerm(tokens, i);
-      parts.push(termLatex);
-      i = nextI;
-    }
-  }
-
-  let result = parts.join("");
-
-  if (solveFor) {
-    result = `${varToLatex(solveFor)} = ${result}`;
+  for (const key of sortedKeys) {
+    const val = values[key];
+    // Replace whole word matches only
+    const regex = new RegExp(`\\b${key}\\b`, 'g');
+    result = result.replace(regex, `(${val})`);
   }
 
   return result;
 }
 
 /**
- * Format a number for display.
+ * Check constraints for a formula evaluation
  */
-export function formatResult(value: number): string {
+export function checkConstraints(
+  constraints: string[],
+  values: Record<string, number>
+): { valid: boolean; violated: string[] } {
+  const violated: string[] = [];
+
+  for (const constraint of constraints) {
+    try {
+      // Parse constraint like "A >= 0" or "Ax^2 + Ay^2 >= 0"
+      const processed = preprocessExpression(constraint);
+      const substituted = substituteVariables(processed, values);
+
+      // Evaluate the comparison
+      const result = evaluate(substituted);
+      if (result === false || result === 0) {
+        violated.push(constraint);
+      }
+    } catch {
+      // If we can't evaluate, skip constraint check
+    }
+  }
+
+  return { valid: violated.length === 0, violated };
+}
+
+/**
+ * Solve a formula for a specific unknown variable
+ */
+export function solveFormula(
+  formula: Formula,
+  unknownVar: string,
+  knownValues: Record<string, number>
+): CalcResult {
+  const solveEntry = formula.solve_for[unknownVar];
+
+  if (!solveEntry) {
+    return {
+      success: false,
+      error: `Cannot solve for "${unknownVar}" — no expression available.`,
+      variable: unknownVar,
+    };
+  }
+
+  if (!solveEntry.solvable) {
+    return {
+      success: false,
+      error: `Variable "${unknownVar}" is marked as not solvable for this formula.`,
+      variable: unknownVar,
+    };
+  }
+
+  // Check all required variables are provided
+  const requiredVars = Object.keys(formula.variables).filter(v => v !== unknownVar);
+  const missingVars = requiredVars.filter(v => knownValues[v] === undefined || knownValues[v] === null || isNaN(knownValues[v]));
+
+  if (missingVars.length > 0) {
+    return {
+      success: false,
+      error: `Missing values for: ${missingVars.map(v => `${v} (${formula.variables[v]?.label || v})`).join(', ')}`,
+      variable: unknownVar,
+    };
+  }
+
+  try {
+    const expr = solveEntry.expr;
+    const processed = preprocessExpression(expr);
+    const substituted = substituteVariables(processed, knownValues);
+
+    // Check for potential issues before evaluating
+    if (substituted.includes('/0)') || substituted.includes('/ 0)')) {
+      // More thorough check
+      const hasDivByZero = /\b0\b/.test(substituted.split('/').pop()?.split(/[\+\-\*]/)[0] || '');
+      // We'll let math.js handle it and catch the error
+    }
+
+    const result = evaluate(substituted);
+
+    if (typeof result !== 'number' || isNaN(result)) {
+      return {
+        success: false,
+        error: 'Calculation resulted in an invalid number (NaN).',
+        variable: unknownVar,
+      };
+    }
+
+    if (!isFinite(result)) {
+      return {
+        success: false,
+        error: 'Calculation resulted in Infinity (likely division by zero).',
+        variable: unknownVar,
+      };
+    }
+
+    // Check constraints
+    const allValues = { ...knownValues, [unknownVar]: result };
+    const constraintCheck = checkConstraints(formula.constraints, allValues);
+    if (!constraintCheck.valid) {
+      return {
+        success: true,
+        value: result,
+        unit: formula.variables[unknownVar]?.unit,
+        error: `Warning: Constraint(s) violated: ${constraintCheck.violated.join(', ')}`,
+        variable: unknownVar,
+      };
+    }
+
+    return {
+      success: true,
+      value: result,
+      unit: formula.variables[unknownVar]?.unit,
+      variable: unknownVar,
+    };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown calculation error';
+
+    // Parse common error types
+    if (message.includes('division by zero') || message.includes('divide by')) {
+      return {
+        success: false,
+        error: 'Division by zero — check your input values.',
+        variable: unknownVar,
+      };
+    }
+
+    if (message.includes('square root') || message.includes('sqrt')) {
+      return {
+        success: false,
+        error: 'Negative value under square root — check your input values.',
+        variable: unknownVar,
+      };
+    }
+
+    return {
+      success: false,
+      error: `Calculation error: ${message}`,
+      variable: unknownVar,
+    };
+  }
+}
+
+/**
+ * Convert expression to LaTeX for rendering
+ */
+export function exprToLatex(expr: string): string {
+  let latex = expr;
+
+  // Replace sqrt() with LaTeX sqrt
+  latex = latex.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}');
+
+  // Replace ^ with superscript
+  latex = latex.replace(/\^(\d+)/g, '^{$1}');
+  latex = latex.replace(/\^([^ ])/g, '^{$1}');
+
+  // Replace * with \cdot
+  latex = latex.replace(/\*/g, ' \\cdot ');
+
+  // Replace pi with \pi
+  latex = latex.replace(/\bpi\b/g, '\\pi');
+
+  // Handle Greek letters
+  const greekMap: Record<string, string> = {
+    theta: '\\theta',
+    alpha: '\\alpha',
+    beta: '\\beta',
+    gamma: '\\gamma',
+    delta: '\\delta',
+    omega: '\\omega',
+    sigma: '\\sigma',
+    lambda: '\\lambda',
+    mu: '\\mu',
+    epsilon: '\\epsilon',
+    phi: '\\phi',
+    eta: '\\eta',
+  };
+  for (const [name, symbol] of Object.entries(greekMap)) {
+    latex = latex.replace(new RegExp(`\\b${name}\\b`, 'g'), symbol);
+  }
+
+  return latex;
+}
+
+/**
+ * Format number for display
+ */
+export function formatResult(value: number, precision: number = 6): string {
+  if (Number.isInteger(value)) return value.toString();
+
+  // For very small or very large numbers, use scientific notation
   if (Math.abs(value) >= 1e6 || (Math.abs(value) < 1e-3 && value !== 0)) {
-    return value.toExponential(4);
+    return value.toExponential(precision - 1);
   }
-  if (Number.isInteger(value)) {
-    return value.toString();
-  }
-  const rounded = parseFloat(value.toPrecision(8));
-  return rounded.toString();
+
+  return parseFloat(value.toPrecision(precision)).toString();
 }

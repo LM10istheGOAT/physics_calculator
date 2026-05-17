@@ -1,0 +1,302 @@
+{
+  "version": "1.0.0",
+  "description": "Physics Formula Engine - Chapter Index",
+  "total_chapters": 21,
+  "total_formulas": 205,
+  "chapters": [
+    {
+      "id": "physical_world",
+      "name": "Physical World & Measurement",
+      "name_bn": "পদার্থের ভৌত অবস্থা ও পরিমাপ",
+      "order": 1,
+      "types": [
+        "unit_conversion",
+        "error_propagation",
+        "dimensional"
+      ],
+      "formula_count": 6,
+      "type_count": 3
+    },
+    {
+      "id": "vectors",
+      "name": "Vectors",
+      "name_bn": "ভেক্টর",
+      "order": 2,
+      "types": [
+        "vector_addition",
+        "vector_subtraction",
+        "vector_resolution",
+        "dot_product",
+        "cross_product",
+        "position_distance",
+        "relative_velocity",
+        "vector_triple_product",
+        "vector_operators",
+        "lami_theorem"
+      ],
+      "formula_count": 29,
+      "type_count": 10
+    },
+    {
+      "id": "kinematics",
+      "name": "Kinematics",
+      "name_bn": "গতিবিদ্যা",
+      "order": 3,
+      "types": [
+        "kinematics_linear",
+        "kinematics_freefall",
+        "kinematics_average",
+        "kinematics_graphical"
+      ],
+      "formula_count": 12,
+      "type_count": 4
+    },
+    {
+      "id": "newtonian_mechanics",
+      "name": "Newtonian Mechanics",
+      "name_bn": "নিউটনীয় বলবিদ্যা",
+      "order": 4,
+      "types": [
+        "newton_second_law",
+        "friction",
+        "apparent_weight",
+        "atwood_machine",
+        "inclined_plane"
+      ],
+      "formula_count": 11,
+      "type_count": 5
+    },
+    {
+      "id": "work_energy_power",
+      "name": "Work, Energy & Power",
+      "name_bn": "কাজ, শক্তি ও ক্ষমতা",
+      "order": 5,
+      "types": [
+        "work",
+        "kinetic_energy_type",
+        "potential_energy_type",
+        "power",
+        "conservation_energy"
+      ],
+      "formula_count": 9,
+      "type_count": 5
+    },
+    {
+      "id": "gravitation",
+      "name": "Gravitation",
+      "name_bn": "মহাকর্ষ ও অভিকর্ষ",
+      "order": 6,
+      "types": [
+        "newton_gravity",
+        "escape_velocity",
+        "orbital_motion",
+        "gravitational_pe"
+      ],
+      "formula_count": 8,
+      "type_count": 4
+    },
+    {
+      "id": "structural_properties",
+      "name": "Structural Properties & Fluids",
+      "name_bn": "পদার্থের গাঠনিক ধর্ম ও প্রবাহী পদার্থ",
+      "order": 7,
+      "types": [
+        "elasticity",
+        "fluid_pressure",
+        "buoyancy",
+        "bernoulli",
+        "viscosity",
+        "surface_tension"
+      ],
+      "formula_count": 13,
+      "type_count": 6
+    },
+    {
+      "id": "circular_motion",
+      "name": "Circular & Oscillatory Motion",
+      "name_bn": "পর্যায়বৃত্ত গতি",
+      "order": 8,
+      "types": [
+        "uniform_circular",
+        "angular_kinematics",
+        "shm_type",
+        "vertical_oscillation"
+      ],
+      "formula_count": 14,
+      "type_count": 4
+    },
+    {
+      "id": "waves",
+      "name": "Waves",
+      "name_bn": "তরঙ্গ",
+      "order": 9,
+      "types": [
+        "wave_basic",
+        "sound_waves",
+        "standing_waves",
+        "interference"
+      ],
+      "formula_count": 11,
+      "type_count": 4
+    },
+    {
+      "id": "gas_laws",
+      "name": "Ideal Gas & Kinetic Theory",
+      "name_bn": "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব",
+      "order": 10,
+      "types": [
+        "gas_laws_basic",
+        "kinetic_theory"
+      ],
+      "formula_count": 7,
+      "type_count": 2
+    },
+    {
+      "id": "thermodynamics",
+      "name": "Thermodynamics",
+      "name_bn": "তাপগতিবিদ্যা",
+      "order": 11,
+      "types": [
+        "heat_transfer",
+        "first_law",
+        "thermo_processes",
+        "efficiency"
+      ],
+      "formula_count": 9,
+      "type_count": 4
+    },
+    {
+      "id": "electrostatics",
+      "name": "Electrostatics",
+      "name_bn": "স্থির তড়িৎ",
+      "order": 12,
+      "types": [
+        "coulombs_law",
+        "electric_field",
+        "electric_potential",
+        "capacitance"
+      ],
+      "formula_count": 8,
+      "type_count": 4
+    },
+    {
+      "id": "current_electricity",
+      "name": "Current Electricity",
+      "name_bn": "চল তড়িৎ",
+      "order": 13,
+      "types": [
+        "ohms_law",
+        "electric_power_type",
+        "circuit_analysis",
+        "wheatstone",
+        "emf_internal"
+      ],
+      "formula_count": 11,
+      "type_count": 5
+    },
+    {
+      "id": "electromagnetism",
+      "name": "Electromagnetism",
+      "name_bn": "তড়িৎ প্রবাহের চৌম্বক ক্রিয়া ও চুম্বকত্ব",
+      "order": 14,
+      "types": [
+        "magnetic_field",
+        "force_current",
+        "torque_coil"
+      ],
+      "formula_count": 6,
+      "type_count": 3
+    },
+    {
+      "id": "electromagnetic_induction",
+      "name": "Electromagnetic Induction & AC",
+      "name_bn": "তাড়িতচৌম্বকীয় আবেশ ও দিক পরিব্তী প্রবাহ",
+      "order": 15,
+      "types": [
+        "faradays_law",
+        "lenz_law",
+        "ac_circuits",
+        "transformer"
+      ],
+      "formula_count": 12,
+      "type_count": 4
+    },
+    {
+      "id": "geometrical_optics",
+      "name": "Geometrical Optics",
+      "name_bn": "জ্যামিতিক আলোকবিজ্ঞান",
+      "order": 16,
+      "types": [
+        "reflection",
+        "refraction",
+        "prism",
+        "dispersion"
+      ],
+      "formula_count": 9,
+      "type_count": 4
+    },
+    {
+      "id": "physical_optics",
+      "name": "Physical Optics",
+      "name_bn": "ভৌত আলোক বিজ্ঞান",
+      "order": 17,
+      "types": [
+        "interference_optics",
+        "diffraction",
+        "em_waves"
+      ],
+      "formula_count": 5,
+      "type_count": 3
+    },
+    {
+      "id": "modern_physics",
+      "name": "Introduction to Modern Physics",
+      "name_bn": "আধুনিক পদার্থবিজ্ঞানের সূচনা",
+      "order": 18,
+      "types": [
+        "quantum",
+        "relativity",
+        "bohr_model"
+      ],
+      "formula_count": 10,
+      "type_count": 3
+    },
+    {
+      "id": "nuclear_physics",
+      "name": "Nuclear Physics & Radioactivity",
+      "name_bn": "নিউক্লিয় পদার্থবিজ্ঞান ও তেজস্ক্রিয়তা",
+      "order": 19,
+      "types": [
+        "radioactivity",
+        "nuclear_reactions",
+        "nuclear_decay"
+      ],
+      "formula_count": 6,
+      "type_count": 3
+    },
+    {
+      "id": "semiconductor",
+      "name": "Semiconductor & Electronics",
+      "name_bn": "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স",
+      "order": 20,
+      "types": [
+        "semiconductor_basic",
+        "diode",
+        "transistor"
+      ],
+      "formula_count": 6,
+      "type_count": 3
+    },
+    {
+      "id": "astronomy",
+      "name": "Astronomy",
+      "name_bn": "জ্যোতির্বিজ্ঞান",
+      "order": 21,
+      "types": [
+        "stellar_physics"
+      ],
+      "formula_count": 3,
+      "type_count": 1
+    }
+  ]
+}

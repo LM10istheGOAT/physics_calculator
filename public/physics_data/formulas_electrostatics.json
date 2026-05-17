@@ -1,0 +1,490 @@
+{
+  "chapter_id": "electrostatics",
+  "chapter_name": "Electrostatics",
+  "chapter_name_bn": "স্থির তড়িৎ",
+  "formulas": [
+    {
+      "id": "coulomb_force",
+      "name": "Coulomb's Law",
+      "name_bn": "কুলম্বের সূত্র",
+      "type": "coulombs_law",
+      "chapter": "electrostatics",
+      "variables": {
+        "F": {
+          "label": "Electric Force",
+          "label_bn": "তড়িৎ বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "k_e": {
+          "label": "Coulomb's Constant",
+          "label_bn": "কুলম্ব ধ্রুবক",
+          "unit": "N*m^2/C^2",
+          "si_unit": "N*m^2/C^2"
+        },
+        "q1": {
+          "label": "Charge 1",
+          "label_bn": "আধান ১",
+          "unit": "C",
+          "si_unit": "C"
+        },
+        "q2": {
+          "label": "Charge 2",
+          "label_bn": "আধান ২",
+          "unit": "C",
+          "si_unit": "C"
+        },
+        "r": {
+          "label": "Distance",
+          "label_bn": "দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "F": {
+          "expr": "k_e*q1*q2/r^2",
+          "solvable": true
+        },
+        "q1": {
+          "expr": "F*r^2/(k_e*q2)",
+          "solvable": true
+        },
+        "q2": {
+          "expr": "F*r^2/(k_e*q1)",
+          "solvable": true
+        },
+        "r": {
+          "expr": "sqrt(k_e*q1*q2/F)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "r > 0",
+        "q1 != 0",
+        "q2 != 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "F",
+        "k_e",
+        "q1",
+        "q2",
+        "r"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "electric_field_point",
+      "name": "Electric Field (Point Charge)",
+      "name_bn": "তড়িৎ ক্ষেত্র (বিন্দু আধান)",
+      "type": "electric_field",
+      "chapter": "electrostatics",
+      "variables": {
+        "E": {
+          "label": "Electric Field",
+          "label_bn": "তড়িৎ ক্ষেত্র",
+          "unit": "N/C",
+          "si_unit": "N/C"
+        },
+        "k_e": {
+          "label": "Coulomb's Constant",
+          "label_bn": "কুলম্ব ধ্রুবক",
+          "unit": "N*m^2/C^2",
+          "si_unit": "N*m^2/C^2"
+        },
+        "q": {
+          "label": "Source Charge",
+          "label_bn": "উৎস আধান",
+          "unit": "C",
+          "si_unit": "C"
+        },
+        "r": {
+          "label": "Distance from Charge",
+          "label_bn": "আধান থেকে দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "E": {
+          "expr": "k_e*q/r^2",
+          "solvable": true
+        },
+        "q": {
+          "expr": "E*r^2/k_e",
+          "solvable": true
+        },
+        "r": {
+          "expr": "sqrt(k_e*q/E)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "r > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "E",
+        "k_e",
+        "q",
+        "r"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "electric_field_uniform",
+      "name": "Electric Field from Force",
+      "name_bn": "বল থেকে তড়িৎ ক্ষেত্র",
+      "type": "electric_field",
+      "chapter": "electrostatics",
+      "variables": {
+        "E": {
+          "label": "Electric Field",
+          "label_bn": "তড়িৎ ক্ষেত্র",
+          "unit": "N/C",
+          "si_unit": "N/C"
+        },
+        "F": {
+          "label": "Force",
+          "label_bn": "বল",
+          "unit": "N",
+          "si_unit": "N"
+        },
+        "q": {
+          "label": "Test Charge",
+          "label_bn": "পরীক্ষণ আধান",
+          "unit": "C",
+          "si_unit": "C"
+        }
+      },
+      "solve_for": {
+        "E": {
+          "expr": "F/q",
+          "solvable": true
+        },
+        "F": {
+          "expr": "E*q",
+          "solvable": true
+        },
+        "q": {
+          "expr": "F/E",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "q != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "E",
+        "F",
+        "q"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "electric_potential_point",
+      "name": "Electric Potential (Point Charge)",
+      "name_bn": "তড়িৎ বিভব (বিন্দু আধান)",
+      "type": "electric_potential",
+      "chapter": "electrostatics",
+      "variables": {
+        "V_elec": {
+          "label": "Electric Potential",
+          "label_bn": "তড়িৎ বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "k_e": {
+          "label": "Coulomb's Constant",
+          "label_bn": "কুলম্ব ধ্রুবক",
+          "unit": "N*m^2/C^2",
+          "si_unit": "N*m^2/C^2"
+        },
+        "q": {
+          "label": "Charge",
+          "label_bn": "আধান",
+          "unit": "C",
+          "si_unit": "C"
+        },
+        "r": {
+          "label": "Distance",
+          "label_bn": "দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "V_elec": {
+          "expr": "k_e*q/r",
+          "solvable": true
+        },
+        "q": {
+          "expr": "V_elec*r/k_e",
+          "solvable": true
+        },
+        "r": {
+          "expr": "k_e*q/V_elec",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "r > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "V_elec",
+        "k_e",
+        "q",
+        "r"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "potential_difference",
+      "name": "Potential Difference from E-field",
+      "name_bn": "তড়িৎ ক্ষেত্র থেকে বিভব পার্থক্য",
+      "type": "electric_potential",
+      "chapter": "electrostatics",
+      "variables": {
+        "delta_V": {
+          "label": "Potential Difference",
+          "label_bn": "বিভব পার্থক্য",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "E": {
+          "label": "Electric Field",
+          "label_bn": "তড়িৎ ক্ষেত্র",
+          "unit": "V/m",
+          "si_unit": "V/m"
+        },
+        "d": {
+          "label": "Distance",
+          "label_bn": "দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "delta_V": {
+          "expr": "E*d",
+          "solvable": true
+        },
+        "E": {
+          "expr": "delta_V/d",
+          "solvable": true
+        },
+        "d": {
+          "expr": "delta_V/E",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "d > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "delta_V",
+        "E",
+        "d"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "capacitor_energy",
+      "name": "Capacitor Energy",
+      "name_bn": "ধারকের শক্তি",
+      "type": "capacitance",
+      "chapter": "electrostatics",
+      "variables": {
+        "U_cap": {
+          "label": "Stored Energy",
+          "label_bn": "সঞ্চিত শক্তি",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "C": {
+          "label": "Capacitance",
+          "label_bn": "ধারকত্ব",
+          "unit": "F",
+          "si_unit": "F"
+        },
+        "V_cap": {
+          "label": "Voltage",
+          "label_bn": "বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        }
+      },
+      "solve_for": {
+        "U_cap": {
+          "expr": "0.5*C*V_cap^2",
+          "solvable": true
+        },
+        "C": {
+          "expr": "2*U_cap/V_cap^2",
+          "solvable": true
+        },
+        "V_cap": {
+          "expr": "sqrt(2*U_cap/C)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "C > 0",
+        "V_cap >= 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "U_cap",
+        "C",
+        "V_cap"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "capacitor_parallel",
+      "name": "Capacitors in Parallel",
+      "name_bn": "সমান্তরাল ধারক",
+      "type": "capacitance",
+      "chapter": "electrostatics",
+      "variables": {
+        "C_eq_p": {
+          "label": "Equivalent Capacitance",
+          "label_bn": "তুল্য ধারকত্ব",
+          "unit": "F",
+          "si_unit": "F"
+        },
+        "C1": {
+          "label": "Capacitor 1",
+          "label_bn": "ধারক ১",
+          "unit": "F",
+          "si_unit": "F"
+        },
+        "C2": {
+          "label": "Capacitor 2",
+          "label_bn": "ধারক ২",
+          "unit": "F",
+          "si_unit": "F"
+        }
+      },
+      "solve_for": {
+        "C_eq_p": {
+          "expr": "C1 + C2",
+          "solvable": true
+        },
+        "C1": {
+          "expr": "C_eq_p - C2",
+          "solvable": true
+        },
+        "C2": {
+          "expr": "C_eq_p - C1",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "C1 > 0",
+        "C2 > 0"
+      ],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "C_eq_p",
+        "C1",
+        "C2"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "capacitor_series",
+      "name": "Capacitors in Series",
+      "name_bn": "শ্রেণি ধারক",
+      "type": "capacitance",
+      "chapter": "electrostatics",
+      "variables": {
+        "C_eq_s": {
+          "label": "Equivalent Capacitance",
+          "label_bn": "তুল্য ধারকত্ব",
+          "unit": "F",
+          "si_unit": "F"
+        },
+        "C1": {
+          "label": "Capacitor 1",
+          "label_bn": "ধারক ১",
+          "unit": "F",
+          "si_unit": "F"
+        },
+        "C2": {
+          "label": "Capacitor 2",
+          "label_bn": "ধারক ২",
+          "unit": "F",
+          "si_unit": "F"
+        }
+      },
+      "solve_for": {
+        "C_eq_s": {
+          "expr": "C1*C2/(C1 + C2)",
+          "solvable": true
+        },
+        "C1": {
+          "expr": "C_eq_s*C2/(C2 - C_eq_s)",
+          "solvable": true
+        },
+        "C2": {
+          "expr": "C_eq_s*C1/(C1 - C_eq_s)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "C1 > 0",
+        "C2 > 0",
+        "C1 + C2 > 0",
+        "C2 > C_eq_s",
+        "C1 > C_eq_s"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "C_eq_s",
+        "C1",
+        "C2"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    }
+  ],
+  "total_formulas": 8,
+  "total_types": 4
+}

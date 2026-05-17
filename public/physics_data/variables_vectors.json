@@ -1,0 +1,733 @@
+{
+  "chapter_id": "vectors",
+  "variables": {
+    "Rx": {
+      "label": "Resultant X Component",
+      "label_bn": "লব্ধির X উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_2d",
+        "vector_addition_3d",
+        "vector_subtraction_2d",
+        "vector_subtraction_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Ry": {
+      "label": "Resultant Y Component",
+      "label_bn": "লব্ধির Y উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_2d",
+        "vector_addition_3d",
+        "vector_subtraction_2d",
+        "vector_subtraction_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Ax": {
+      "label": "Vector A X Component",
+      "label_bn": "A ভেক্টরের X উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_2d",
+        "vector_addition_3d",
+        "vector_subtraction_2d",
+        "vector_subtraction_3d",
+        "dot_product_component",
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Ay": {
+      "label": "Vector A Y Component",
+      "label_bn": "A ভেক্টরের Y উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_2d",
+        "vector_addition_3d",
+        "vector_subtraction_2d",
+        "vector_subtraction_3d",
+        "dot_product_component",
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Bx": {
+      "label": "Vector B X Component",
+      "label_bn": "B ভেক্টরের X উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_2d",
+        "vector_addition_3d",
+        "vector_subtraction_2d",
+        "vector_subtraction_3d",
+        "dot_product_component",
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "By": {
+      "label": "Vector B Y Component",
+      "label_bn": "B ভেক্টরের Y উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_2d",
+        "vector_addition_3d",
+        "vector_subtraction_2d",
+        "vector_subtraction_3d",
+        "dot_product_component",
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Rz": {
+      "label": "Resultant Z Component",
+      "label_bn": "লব্ধির Z উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_3d",
+        "vector_subtraction_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Az": {
+      "label": "Vector A Z Component",
+      "label_bn": "A ভেক্টরের Z উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_3d",
+        "vector_subtraction_3d",
+        "dot_product_component",
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Bz": {
+      "label": "Vector B Z Component",
+      "label_bn": "B ভেক্টরের Z উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_addition_3d",
+        "vector_subtraction_3d",
+        "dot_product_component",
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "R": {
+      "label": "Resultant Magnitude",
+      "label_bn": "লব্ধির মান",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_resultant_magnitude"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "A": {
+      "label": "Magnitude of Vector A",
+      "label_bn": "A ভেক্টরের মান",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_resultant_magnitude",
+        "vector_resultant_angle",
+        "dot_product_geometric",
+        "angle_from_dot",
+        "projection_scalar",
+        "cross_product_magnitude",
+        "parallelogram_area",
+        "triangle_area",
+        "lami_theorem",
+        "projection_vector"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "B": {
+      "label": "Magnitude of Vector B",
+      "label_bn": "B ভেক্টরের মান",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_resultant_magnitude",
+        "vector_resultant_angle",
+        "dot_product_geometric",
+        "angle_from_dot",
+        "projection_scalar",
+        "cross_product_magnitude",
+        "parallelogram_area",
+        "triangle_area",
+        "lami_theorem"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "theta": {
+      "label": "Angle Between Vectors",
+      "label_bn": "ভেক্টরদ্বয়ের মধ্যবর্তী কোণ",
+      "unit": "rad",
+      "si_unit": "rad",
+      "used_in_formulas": [
+        "vector_resultant_magnitude",
+        "vector_resultant_angle",
+        "vector_x_component",
+        "vector_y_component",
+        "dot_product_geometric",
+        "angle_from_dot",
+        "projection_scalar",
+        "cross_product_magnitude",
+        "parallelogram_area",
+        "triangle_area",
+        "river_boat_min_distance"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "alpha": {
+      "label": "Resultant Angle with A",
+      "label_bn": "A এর সাথে লব্ধির কোণ",
+      "unit": "rad",
+      "si_unit": "rad",
+      "used_in_formulas": [
+        "vector_resultant_angle",
+        "lami_theorem"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Vx": {
+      "label": "X Component",
+      "label_bn": "X উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_x_component",
+        "vector_magnitude_2d",
+        "vector_magnitude_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "V": {
+      "label": "Vector Magnitude",
+      "label_bn": "ভেক্টরের মান",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_x_component",
+        "vector_y_component",
+        "vector_z_component",
+        "vector_magnitude_2d",
+        "vector_magnitude_3d",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Vy": {
+      "label": "Y Component",
+      "label_bn": "Y উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_y_component",
+        "vector_magnitude_2d",
+        "vector_magnitude_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Vz": {
+      "label": "Z Component",
+      "label_bn": "Z উপাংশ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "vector_z_component",
+        "vector_magnitude_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "phi": {
+      "label": "Angle with Z-axis (Polar)",
+      "label_bn": "Z অক্ষের সাথে কোণ",
+      "unit": "rad",
+      "si_unit": "rad",
+      "used_in_formulas": [
+        "vector_z_component"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "AdotB": {
+      "label": "Dot Product A·B",
+      "label_bn": "স্কেলার গুণফল A·B",
+      "unit": "m^2",
+      "si_unit": "m^2",
+      "used_in_formulas": [
+        "dot_product_geometric",
+        "dot_product_component",
+        "angle_from_dot",
+        "projection_vector"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "proj_B_on_A": {
+      "label": "Scalar Projection of B on A",
+      "label_bn": "A এর উপর B এর স্কেলার অভিক্ষেপ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "projection_scalar"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "AcrossB": {
+      "label": "Magnitude of A×B",
+      "label_bn": "A×B এর মান",
+      "unit": "m^2",
+      "si_unit": "m^2",
+      "used_in_formulas": [
+        "cross_product_magnitude"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Cx": {
+      "label": "Cross Product X Component",
+      "label_bn": "ক্রস গুণফলের X উপাংশ",
+      "unit": "m^2",
+      "si_unit": "m^2",
+      "used_in_formulas": [
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Cy": {
+      "label": "Cross Product Y Component",
+      "label_bn": "ক্রস গুণফলের Y উপাংশ",
+      "unit": "m^2",
+      "si_unit": "m^2",
+      "used_in_formulas": [
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "Cz": {
+      "label": "Cross Product Z Component",
+      "label_bn": "ক্রস গুণফলের Z উপাংশ",
+      "unit": "m^2",
+      "si_unit": "m^2",
+      "used_in_formulas": [
+        "cross_product_component",
+        "scalar_triple_product"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "area_para": {
+      "label": "Parallelogram Area",
+      "label_bn": "সামান্তরিকের ক্ষেত্রফল",
+      "unit": "m^2",
+      "si_unit": "m^2",
+      "used_in_formulas": [
+        "parallelogram_area"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "area_tri": {
+      "label": "Triangle Area",
+      "label_bn": "ত্রিভুজের ক্ষেত্রফল",
+      "unit": "m^2",
+      "si_unit": "m^2",
+      "used_in_formulas": [
+        "triangle_area"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "r": {
+      "label": "Position Vector Magnitude",
+      "label_bn": "অবস্থান ভেক্টরের মান",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "position_vector"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "x": {
+      "label": "X Coordinate",
+      "label_bn": "X স্থানাঙ্ক",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "position_vector"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "y": {
+      "label": "Y Coordinate",
+      "label_bn": "Y স্থানাঙ্ক",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "position_vector"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "z": {
+      "label": "Z Coordinate",
+      "label_bn": "Z স্থানাঙ্ক",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "position_vector"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "d": {
+      "label": "Distance",
+      "label_bn": "দূরত্ব",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "distance_2d",
+        "distance_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "x1": {
+      "label": "Point 1 X",
+      "label_bn": "বিন্দু ১ X",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "distance_2d",
+        "distance_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "y1": {
+      "label": "Point 1 Y",
+      "label_bn": "বিন্দু ১ Y",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "distance_2d",
+        "distance_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "x2": {
+      "label": "Point 2 X",
+      "label_bn": "বিন্দু ২ X",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "distance_2d",
+        "distance_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "y2": {
+      "label": "Point 2 Y",
+      "label_bn": "বিন্দু ২ Y",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "distance_2d",
+        "distance_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "z1": {
+      "label": "Point 1 Z",
+      "label_bn": "বিন্দু ১ Z",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "distance_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "z2": {
+      "label": "Point 2 Z",
+      "label_bn": "বিন্দু ২ Z",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "distance_3d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "v_ab": {
+      "label": "Velocity of A relative to B",
+      "label_bn": "B এর সাপেক্ষে A এর বেগ",
+      "unit": "m/s",
+      "si_unit": "m/s",
+      "used_in_formulas": [
+        "relative_velocity_1d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "v_a": {
+      "label": "Velocity of A (ground frame)",
+      "label_bn": "A এর বেগ (ভূমির সাপেক্ষে)",
+      "unit": "m/s",
+      "si_unit": "m/s",
+      "used_in_formulas": [
+        "relative_velocity_1d"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "v_b": {
+      "label": "Velocity of B (ground frame)",
+      "label_bn": "B এর বেগ (ভূমির সাপেক্ষে)",
+      "unit": "m/s",
+      "si_unit": "m/s",
+      "used_in_formulas": [
+        "relative_velocity_1d",
+        "river_boat_min_time",
+        "river_boat_min_distance"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "t_min": {
+      "label": "Minimum Crossing Time",
+      "label_bn": "ন্যূনতম পারাপার সময়",
+      "unit": "s",
+      "si_unit": "s",
+      "used_in_formulas": [
+        "river_boat_min_time"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "w": {
+      "label": "River Width",
+      "label_bn": "নদীর প্রস্থ",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "river_boat_min_time",
+        "river_boat_min_distance"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "t": {
+      "label": "Crossing Time",
+      "label_bn": "পারাপার সময়",
+      "unit": "s",
+      "si_unit": "s",
+      "used_in_formulas": [
+        "river_boat_min_distance"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "v_r": {
+      "label": "River Current Speed",
+      "label_bn": "স্রোতের বেগ",
+      "unit": "m/s",
+      "si_unit": "m/s",
+      "used_in_formulas": [
+        "river_boat_min_distance"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "C": {
+      "label": "Force C Magnitude",
+      "label_bn": "বল C এর মান",
+      "unit": "N",
+      "si_unit": "N",
+      "used_in_formulas": [
+        "lami_theorem"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "beta": {
+      "label": "Angle Opposite to B",
+      "label_bn": "B এর বিপরীত কোণ",
+      "unit": "rad",
+      "si_unit": "rad",
+      "used_in_formulas": [
+        "lami_theorem"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "gamma": {
+      "label": "Angle Opposite to C",
+      "label_bn": "C এর বিপরীত কোণ",
+      "unit": "rad",
+      "si_unit": "rad",
+      "used_in_formulas": [
+        "lami_theorem"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "div_F": {
+      "label": "Divergence Value",
+      "label_bn": "ডাইভার্জেন্স মান",
+      "unit": "m^-1",
+      "si_unit": "m^-1",
+      "used_in_formulas": [
+        "divergence"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "dFx_dx": {
+      "label": "∂Fx/∂x",
+      "label_bn": "∂Fx/∂x",
+      "unit": "m^-1",
+      "si_unit": "m^-1",
+      "used_in_formulas": [
+        "divergence"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "dFy_dy": {
+      "label": "∂Fy/∂y",
+      "label_bn": "∂Fy/∂y",
+      "unit": "m^-1",
+      "si_unit": "m^-1",
+      "used_in_formulas": [
+        "divergence"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "dFz_dz": {
+      "label": "∂Fz/∂z",
+      "label_bn": "∂Fz/∂z",
+      "unit": "m^-1",
+      "si_unit": "m^-1",
+      "used_in_formulas": [
+        "divergence"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    },
+    "proj_vec_mag": {
+      "label": "Projection Magnitude",
+      "label_bn": "অভিক্ষেপের মান",
+      "unit": "m",
+      "si_unit": "m",
+      "used_in_formulas": [
+        "projection_vector"
+      ],
+      "chapters": [
+        "vectors"
+      ]
+    }
+  },
+  "total_variables": 53
+}

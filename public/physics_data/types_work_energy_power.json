@@ -1,0 +1,51 @@
+{
+  "chapter_id": "work_energy_power",
+  "chapter_name": "Work, Energy & Power",
+  "chapter_name_bn": "কাজ, শক্তি ও ক্ষমতা",
+  "types": [
+    {
+      "id": "work",
+      "name": "Work",
+      "name_bn": "কাজ",
+      "formulas": [
+        "work_force_displacement",
+        "work_angle"
+      ]
+    },
+    {
+      "id": "kinetic_energy_type",
+      "name": "Kinetic Energy",
+      "name_bn": "গতিশক্তি",
+      "formulas": [
+        "kinetic_energy",
+        "work_energy_theorem"
+      ]
+    },
+    {
+      "id": "potential_energy_type",
+      "name": "Potential Energy",
+      "name_bn": "বিভবশক্তি",
+      "formulas": [
+        "gravitational_pe",
+        "elastic_pe"
+      ]
+    },
+    {
+      "id": "power",
+      "name": "Power",
+      "name_bn": "ক্ষমতা",
+      "formulas": [
+        "power_work_time",
+        "power_force_velocity"
+      ]
+    },
+    {
+      "id": "conservation_energy",
+      "name": "Conservation of Energy",
+      "name_bn": "শক্তির সংরক্ষণ",
+      "formulas": [
+        "mechanical_energy_conservation"
+      ]
+    }
+  ]
+}

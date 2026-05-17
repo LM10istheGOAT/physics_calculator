@@ -1,0 +1,44 @@
+{
+  "chapter_id": "thermodynamics",
+  "chapter_name": "Thermodynamics",
+  "chapter_name_bn": "তাপগতিবিদ্যা",
+  "types": [
+    {
+      "id": "heat_transfer",
+      "name": "Heat Transfer",
+      "name_bn": "তাপ পরিবহন",
+      "formulas": [
+        "heat_conduction",
+        "heat_capacity",
+        "latent_heat"
+      ]
+    },
+    {
+      "id": "first_law",
+      "name": "First Law of Thermodynamics",
+      "name_bn": "তাপগতিবিদ্যার প্রথম সূত্র",
+      "formulas": [
+        "first_law_thermo"
+      ]
+    },
+    {
+      "id": "thermo_processes",
+      "name": "Thermodynamic Processes",
+      "name_bn": "তাপগতীয় প্রক্রিয়া",
+      "formulas": [
+        "isothermal_work",
+        "adiabatic_relation",
+        "isobaric_work"
+      ]
+    },
+    {
+      "id": "efficiency",
+      "name": "Heat Engine Efficiency",
+      "name_bn": "তাপ ইঞ্জিনের দক্ষতা",
+      "formulas": [
+        "carnot_efficiency",
+        "heat_engine_efficiency"
+      ]
+    }
+  ]
+}

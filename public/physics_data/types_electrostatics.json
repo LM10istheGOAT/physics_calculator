@@ -1,0 +1,43 @@
+{
+  "chapter_id": "electrostatics",
+  "chapter_name": "Electrostatics",
+  "chapter_name_bn": "স্থির তড়িৎ",
+  "types": [
+    {
+      "id": "coulombs_law",
+      "name": "Coulomb's Law",
+      "name_bn": "কুলম্বের সূত্র",
+      "formulas": [
+        "coulomb_force"
+      ]
+    },
+    {
+      "id": "electric_field",
+      "name": "Electric Field",
+      "name_bn": "তড়িৎ ক্ষেত্র",
+      "formulas": [
+        "electric_field_point",
+        "electric_field_uniform"
+      ]
+    },
+    {
+      "id": "electric_potential",
+      "name": "Electric Potential",
+      "name_bn": "তড়িৎ বিভব",
+      "formulas": [
+        "electric_potential_point",
+        "potential_difference"
+      ]
+    },
+    {
+      "id": "capacitance",
+      "name": "Capacitance",
+      "name_bn": "ধারকত্ব",
+      "formulas": [
+        "capacitor_energy",
+        "capacitor_parallel",
+        "capacitor_series"
+      ]
+    }
+  ]
+}

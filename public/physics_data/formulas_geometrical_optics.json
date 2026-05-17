@@ -1,0 +1,515 @@
+{
+  "chapter_id": "geometrical_optics",
+  "chapter_name": "Geometrical Optics",
+  "chapter_name_bn": "জ্যামিতিক আলোকবিজ্ঞান",
+  "formulas": [
+    {
+      "id": "mirror_formula",
+      "name": "Mirror Formula",
+      "name_bn": "দর্পণ সূত্র",
+      "type": "reflection",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "f_mir": {
+          "label": "Focal Length",
+          "label_bn": "ফোকাস দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "v_mir": {
+          "label": "Image Distance",
+          "label_bn": "প্রতিবিম্ব দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "u_mir": {
+          "label": "Object Distance",
+          "label_bn": "বস্তু দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "f_mir": {
+          "expr": "v_mir*u_mir/(v_mir + u_mir)",
+          "solvable": true
+        },
+        "v_mir": {
+          "expr": "f_mir*u_mir/(u_mir - f_mir)",
+          "solvable": true
+        },
+        "u_mir": {
+          "expr": "f_mir*v_mir/(v_mir - f_mir)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "v_mir + u_mir != 0",
+        "u_mir - f_mir != 0",
+        "v_mir - f_mir != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "f_mir",
+        "v_mir",
+        "u_mir"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "mirror_magnification",
+      "name": "Mirror Magnification",
+      "name_bn": "দর্পণের বিবর্ধন",
+      "type": "reflection",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "m_mir": {
+          "label": "Magnification",
+          "label_bn": "বিবর্ধন",
+          "unit": "",
+          "si_unit": ""
+        },
+        "v_m_mag": {
+          "label": "Image Distance",
+          "label_bn": "প্রতিবিম্ব দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "u_m_mag": {
+          "label": "Object Distance",
+          "label_bn": "বস্তু দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "m_mir": {
+          "expr": "-v_m_mag/u_m_mag",
+          "solvable": true
+        },
+        "v_m_mag": {
+          "expr": "-m_mir*u_m_mag",
+          "solvable": true
+        },
+        "u_m_mag": {
+          "expr": "-v_m_mag/m_mir",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "u_m_mag != 0",
+        "m_mir != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "m_mir",
+        "v_m_mag",
+        "u_m_mag"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "snells_law",
+      "name": "Snell's Law",
+      "name_bn": "স্নেলের সূত্র",
+      "type": "refraction",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "n1": {
+          "label": "Refractive Index 1",
+          "label_bn": "প্রতিসরাঙ্ক ১",
+          "unit": "",
+          "si_unit": ""
+        },
+        "n2": {
+          "label": "Refractive Index 2",
+          "label_bn": "প্রতিসরাঙ্ক ২",
+          "unit": "",
+          "si_unit": ""
+        },
+        "theta1": {
+          "label": "Angle of Incidence",
+          "label_bn": "আপতন কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        },
+        "theta2": {
+          "label": "Angle of Refraction",
+          "label_bn": "প্রতিসরণ কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "n2": {
+          "expr": "n1*sin(theta1)/sin(theta2)",
+          "solvable": true
+        },
+        "n1": {
+          "expr": "n2*sin(theta2)/sin(theta1)",
+          "solvable": true
+        },
+        "theta1": {
+          "expr": "asin(n2*sin(theta2)/n1)",
+          "solvable": true
+        },
+        "theta2": {
+          "expr": "asin(n1*sin(theta1)/n2)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "n1 > 0",
+        "n2 > 0",
+        "abs(n1*sin(theta1)/n2) <= 1",
+        "abs(n2*sin(theta2)/n1) <= 1"
+      ],
+      "errors": [
+        "division_by_zero",
+        "asin_domain"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "n1",
+        "n2",
+        "theta1",
+        "theta2"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "critical_angle",
+      "name": "Critical Angle (Total Internal Reflection)",
+      "name_bn": "সংকটাপন্ন কোণ",
+      "type": "refraction",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "theta_c": {
+          "label": "Critical Angle",
+          "label_bn": "সংকটাপন্ন কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        },
+        "n1_ca": {
+          "label": "Denser Medium Refractive Index",
+          "label_bn": "ঘন মাধ্যমের প্রতিসরাঙ্ক",
+          "unit": "",
+          "si_unit": ""
+        },
+        "n2_ca": {
+          "label": "Rarer Medium Refractive Index",
+          "label_bn": "লঘু মাধ্যমের প্রতিসরাঙ্ক",
+          "unit": "",
+          "si_unit": ""
+        }
+      },
+      "solve_for": {
+        "theta_c": {
+          "expr": "asin(n2_ca/n1_ca)",
+          "solvable": true
+        },
+        "n2_ca": {
+          "expr": "n1_ca*sin(theta_c)",
+          "solvable": true
+        },
+        "n1_ca": {
+          "expr": "n2_ca/sin(theta_c)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "n1_ca > n2_ca",
+        "n2_ca/n1_ca <= 1"
+      ],
+      "errors": [
+        "asin_domain",
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "theta_c",
+        "n1_ca",
+        "n2_ca"
+      ],
+      "category": "trigonometric",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "lens_formula",
+      "name": "Thin Lens Formula",
+      "name_bn": "পাতলা লেন্স সূত্র",
+      "type": "refraction",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "f_lens": {
+          "label": "Focal Length",
+          "label_bn": "ফোকাস দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "v_lens": {
+          "label": "Image Distance",
+          "label_bn": "প্রতিবিম্ব দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "u_lens": {
+          "label": "Object Distance",
+          "label_bn": "বস্তু দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "f_lens": {
+          "expr": "v_lens*u_lens/(v_lens + u_lens)",
+          "solvable": true
+        },
+        "v_lens": {
+          "expr": "f_lens*u_lens/(u_lens - f_lens)",
+          "solvable": true
+        },
+        "u_lens": {
+          "expr": "f_lens*v_lens/(v_lens - f_lens)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "v_lens + u_lens != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "f_lens",
+        "v_lens",
+        "u_lens"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "lens_magnification",
+      "name": "Lens Magnification",
+      "name_bn": "লেন্সের বিবর্ধন",
+      "type": "refraction",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "m_lens": {
+          "label": "Magnification",
+          "label_bn": "বিবর্ধন",
+          "unit": "",
+          "si_unit": ""
+        },
+        "v_l_mag": {
+          "label": "Image Distance",
+          "label_bn": "প্রতিবিম্ব দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "u_l_mag": {
+          "label": "Object Distance",
+          "label_bn": "বস্তু দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "m_lens": {
+          "expr": "v_l_mag/u_l_mag",
+          "solvable": true
+        },
+        "v_l_mag": {
+          "expr": "m_lens*u_l_mag",
+          "solvable": true
+        },
+        "u_l_mag": {
+          "expr": "v_l_mag/m_lens",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "u_l_mag != 0",
+        "m_lens != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "m_lens",
+        "v_l_mag",
+        "u_l_mag"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "lens_power",
+      "name": "Lens Power",
+      "name_bn": "লেন্সের ক্ষমতা",
+      "type": "refraction",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "P_lens": {
+          "label": "Power",
+          "label_bn": "ক্ষমতা",
+          "unit": "D",
+          "si_unit": "D"
+        },
+        "f_pwr": {
+          "label": "Focal Length",
+          "label_bn": "ফোকাস দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "P_lens": {
+          "expr": "1/f_pwr",
+          "solvable": true
+        },
+        "f_pwr": {
+          "expr": "1/P_lens",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "f_pwr != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "P_lens",
+        "f_pwr"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "prism_deviation",
+      "name": "Prism Deviation",
+      "name_bn": "প্রিজমের বিচ্যুতি",
+      "type": "prism",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "delta_pr": {
+          "label": "Angle of Deviation",
+          "label_bn": "বিচ্যুতি কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        },
+        "i_pr": {
+          "label": "Angle of Incidence",
+          "label_bn": "আপতন কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        },
+        "e_pr": {
+          "label": "Angle of Emergence",
+          "label_bn": "উত্তরণ কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        },
+        "A_pr": {
+          "label": "Prism Angle",
+          "label_bn": "প্রিজম কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "delta_pr": {
+          "expr": "i_pr + e_pr - A_pr",
+          "solvable": true
+        },
+        "i_pr": {
+          "expr": "delta_pr + A_pr - e_pr",
+          "solvable": true
+        },
+        "e_pr": {
+          "expr": "delta_pr + A_pr - i_pr",
+          "solvable": true
+        },
+        "A_pr": {
+          "expr": "i_pr + e_pr - delta_pr",
+          "solvable": true
+        }
+      },
+      "constraints": [],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "delta_pr",
+        "i_pr",
+        "e_pr",
+        "A_pr"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "prism_min_deviation",
+      "name": "Prism Minimum Deviation",
+      "name_bn": "প্রিজমের সর্বনিম্ন বিচ্যুতি",
+      "type": "prism",
+      "chapter": "geometrical_optics",
+      "variables": {
+        "n_pr": {
+          "label": "Refractive Index of Prism",
+          "label_bn": "প্রিজমের প্রতিসরাঙ্ক",
+          "unit": "",
+          "si_unit": ""
+        },
+        "A_pm": {
+          "label": "Prism Angle",
+          "label_bn": "প্রিজম কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        },
+        "delta_m": {
+          "label": "Minimum Deviation",
+          "label_bn": "সর্বনিম্ন বিচ্যুতি",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "n_pr": {
+          "expr": "sin((A_pm + delta_m)/2)/sin(A_pm/2)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "A_pm > 0",
+        "A_pm/2 > 0",
+        "sin(A_pm/2) != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "n_pr",
+        "A_pm",
+        "delta_m"
+      ],
+      "category": "trigonometric",
+      "difficulty": "advanced"
+    }
+  ],
+  "total_formulas": 9,
+  "total_types": 4
+}

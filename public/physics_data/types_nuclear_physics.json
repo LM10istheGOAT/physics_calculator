@@ -1,0 +1,35 @@
+{
+  "chapter_id": "nuclear_physics",
+  "chapter_name": "Nuclear Physics & Radioactivity",
+  "chapter_name_bn": "নিউক্লিয় পদার্থবিজ্ঞান ও তেজস্ক্রিয়তা",
+  "types": [
+    {
+      "id": "radioactivity",
+      "name": "Radioactivity",
+      "name_bn": "তেজস্ক্রিয়তা",
+      "formulas": [
+        "half_life",
+        "activity_decay",
+        "decay_constant"
+      ]
+    },
+    {
+      "id": "nuclear_reactions",
+      "name": "Nuclear Reactions",
+      "name_bn": "নিউক্লিয় বিক্রিয়া",
+      "formulas": [
+        "mass_energy",
+        "binding_energy",
+        "mass_defect"
+      ]
+    },
+    {
+      "id": "nuclear_decay",
+      "name": "Nuclear Decay Law",
+      "name_bn": "নিউক্লিয় ক্ষয় সূত্র",
+      "formulas": [
+        "nuclear_decay_N"
+      ]
+    }
+  ]
+}

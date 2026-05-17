@@ -1,0 +1,699 @@
+{
+  "chapter_id": "electromagnetic_induction",
+  "chapter_name": "Electromagnetic Induction & AC",
+  "chapter_name_bn": "তাড়িতচৌম্বকীয় আবেশ ও দিক পরিব্তী প্রবাহ",
+  "formulas": [
+    {
+      "id": "magnetic_flux",
+      "name": "Magnetic Flux",
+      "name_bn": "চৌম্বক ফ্লাক্স",
+      "type": "faradays_law",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "phi_B": {
+          "label": "Magnetic Flux",
+          "label_bn": "চৌম্বক ফ্লাক্স",
+          "unit": "Wb",
+          "si_unit": "Wb"
+        },
+        "B_flux": {
+          "label": "Magnetic Field",
+          "label_bn": "চৌম্বক ক্ষেত্র",
+          "unit": "T",
+          "si_unit": "T"
+        },
+        "A_flux": {
+          "label": "Area",
+          "label_bn": "ক্ষেত্রফল",
+          "unit": "m^2",
+          "si_unit": "m^2"
+        },
+        "theta_flux": {
+          "label": "Angle Between B and Normal",
+          "label_bn": "B ও অভিলম্বের কোণ",
+          "unit": "rad",
+          "si_unit": "rad"
+        }
+      },
+      "solve_for": {
+        "phi_B": {
+          "expr": "B_flux*A_flux*cos(theta_flux)",
+          "solvable": true
+        },
+        "B_flux": {
+          "expr": "phi_B/(A_flux*cos(theta_flux))",
+          "solvable": true
+        },
+        "A_flux": {
+          "expr": "phi_B/(B_flux*cos(theta_flux))",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "A_flux > 0",
+        "cos(theta_flux) != 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "phi_B",
+        "B_flux",
+        "A_flux",
+        "theta_flux"
+      ],
+      "category": "trigonometric",
+      "difficulty": "basic"
+    },
+    {
+      "id": "faraday_emf",
+      "name": "Faraday's Law (EMF = -N dΦ/dt)",
+      "name_bn": "ফ্যারাডের সূত্র",
+      "type": "faradays_law",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "EMF_ind": {
+          "label": "Induced EMF",
+          "label_bn": "আবশ্যিত তড়িৎ চালক বল",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "N_turns": {
+          "label": "Number of Turns",
+          "label_bn": "পাক সংখ্যা",
+          "unit": "",
+          "si_unit": ""
+        },
+        "dphi_dt": {
+          "label": "Rate of Change of Flux",
+          "label_bn": "ফ্লাক্স পরিবর্তনের হার",
+          "unit": "Wb/s",
+          "si_unit": "Wb/s"
+        }
+      },
+      "solve_for": {
+        "EMF_ind": {
+          "expr": "N_turns*dphi_dt",
+          "solvable": true
+        },
+        "N_turns": {
+          "expr": "EMF_ind/dphi_dt",
+          "solvable": true
+        },
+        "dphi_dt": {
+          "expr": "EMF_ind/N_turns",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "N_turns > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [
+        "magnetic_flux"
+      ],
+      "memory_keys": [
+        "EMF_ind",
+        "N_turns",
+        "dphi_dt"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "induced_emf_motional",
+      "name": "Motional EMF",
+      "name_bn": "গতিশীল EMF",
+      "type": "faradays_law",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "EMF_mot": {
+          "label": "Motional EMF",
+          "label_bn": "গতিশীল EMF",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "B_mot": {
+          "label": "Magnetic Field",
+          "label_bn": "চৌম্বক ক্ষেত্র",
+          "unit": "T",
+          "si_unit": "T"
+        },
+        "L_mot": {
+          "label": "Conductor Length",
+          "label_bn": "পরিবাহীর দৈর্ঘ্য",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "v_mot": {
+          "label": "Velocity",
+          "label_bn": "বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        }
+      },
+      "solve_for": {
+        "EMF_mot": {
+          "expr": "B_mot*L_mot*v_mot",
+          "solvable": true
+        },
+        "B_mot": {
+          "expr": "EMF_mot/(L_mot*v_mot)",
+          "solvable": true
+        },
+        "L_mot": {
+          "expr": "EMF_mot/(B_mot*v_mot)",
+          "solvable": true
+        },
+        "v_mot": {
+          "expr": "EMF_mot/(B_mot*L_mot)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "L_mot > 0",
+        "v_mot > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "EMF_mot",
+        "B_mot",
+        "L_mot",
+        "v_mot"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "self_inductance_emf",
+      "name": "Self-Inductance EMF",
+      "name_bn": "স্বআবেশ EMF",
+      "type": "lenz_law",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "EMF_self": {
+          "label": "Self-Induced EMF",
+          "label_bn": "স্বআবশ্যিত EMF",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "L_self": {
+          "label": "Self-Inductance",
+          "label_bn": "স্বআবেশ গুণাঙ্ক",
+          "unit": "H",
+          "si_unit": "H"
+        },
+        "dI_dt": {
+          "label": "Rate of Change of Current",
+          "label_bn": "তড়িৎ প্রবাহ পরিবর্তনের হার",
+          "unit": "A/s",
+          "si_unit": "A/s"
+        }
+      },
+      "solve_for": {
+        "EMF_self": {
+          "expr": "L_self*dI_dt",
+          "solvable": true
+        },
+        "L_self": {
+          "expr": "EMF_self/dI_dt",
+          "solvable": true
+        },
+        "dI_dt": {
+          "expr": "EMF_self/L_self",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "L_self > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "EMF_self",
+        "L_self",
+        "dI_dt"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "mutual_inductance",
+      "name": "Mutual Inductance",
+      "name_bn": "পারস্পরিক আবেশ",
+      "type": "lenz_law",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "EMF_mut": {
+          "label": "Mutually Induced EMF",
+          "label_bn": "পারস্পরিক আবশ্যিত EMF",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "M_mut": {
+          "label": "Mutual Inductance",
+          "label_bn": "পারস্পরিক আবেশ গুণাঙ্ক",
+          "unit": "H",
+          "si_unit": "H"
+        },
+        "dI2_dt": {
+          "label": "Rate of Change of Current in Other Coil",
+          "label_bn": "অন্য কুণ্ডলীতে তড়িৎ পরিবর্তন হার",
+          "unit": "A/s",
+          "si_unit": "A/s"
+        }
+      },
+      "solve_for": {
+        "EMF_mut": {
+          "expr": "M_mut*dI2_dt",
+          "solvable": true
+        },
+        "M_mut": {
+          "expr": "EMF_mut/dI2_dt",
+          "solvable": true
+        },
+        "dI2_dt": {
+          "expr": "EMF_mut/M_mut",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "M_mut > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "EMF_mut",
+        "M_mut",
+        "dI2_dt"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "inductor_energy",
+      "name": "Inductor Energy",
+      "name_bn": "আবেশকের শক্তি",
+      "type": "lenz_law",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "U_ind": {
+          "label": "Stored Energy",
+          "label_bn": "সঞ্চিত শক্তি",
+          "unit": "J",
+          "si_unit": "J"
+        },
+        "L_ind": {
+          "label": "Inductance",
+          "label_bn": "আবেশ গুণাঙ্ক",
+          "unit": "H",
+          "si_unit": "H"
+        },
+        "I_ind": {
+          "label": "Current",
+          "label_bn": "তড়িৎ প্রবাহ",
+          "unit": "A",
+          "si_unit": "A"
+        }
+      },
+      "solve_for": {
+        "U_ind": {
+          "expr": "0.5*L_ind*I_ind^2",
+          "solvable": true
+        },
+        "L_ind": {
+          "expr": "2*U_ind/I_ind^2",
+          "solvable": true
+        },
+        "I_ind": {
+          "expr": "sqrt(2*U_ind/L_ind)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "L_ind > 0",
+        "I_ind >= 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "U_ind",
+        "L_ind",
+        "I_ind"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "ac_rms",
+      "name": "AC RMS Value",
+      "name_bn": "AC এর বর্গমূল গড় মান",
+      "type": "ac_circuits",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "V_rms": {
+          "label": "RMS Voltage",
+          "label_bn": "RMS বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "V_peak": {
+          "label": "Peak Voltage",
+          "label_bn": "শীর্ষ বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        }
+      },
+      "solve_for": {
+        "V_rms": {
+          "expr": "V_peak/sqrt(2)",
+          "solvable": true
+        },
+        "V_peak": {
+          "expr": "V_rms*sqrt(2)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "V_peak > 0"
+      ],
+      "errors": [],
+      "depends_on": [],
+      "memory_keys": [
+        "V_rms",
+        "V_peak"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    },
+    {
+      "id": "inductive_reactance",
+      "name": "Inductive Reactance",
+      "name_bn": "আবেশী রোধ",
+      "type": "ac_circuits",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "X_L": {
+          "label": "Inductive Reactance",
+          "label_bn": "আবেশী রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "omega_ac": {
+          "label": "Angular Frequency",
+          "label_bn": "কৌণিক কম্পাঙ্ক",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "L_XL": {
+          "label": "Inductance",
+          "label_bn": "আবেশ গুণাঙ্ক",
+          "unit": "H",
+          "si_unit": "H"
+        }
+      },
+      "solve_for": {
+        "X_L": {
+          "expr": "omega_ac*L_XL",
+          "solvable": true
+        },
+        "omega_ac": {
+          "expr": "X_L/L_XL",
+          "solvable": true
+        },
+        "L_XL": {
+          "expr": "X_L/omega_ac",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "omega_ac > 0",
+        "L_XL > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "X_L",
+        "omega_ac",
+        "L_XL"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "capacitive_reactance",
+      "name": "Capacitive Reactance",
+      "name_bn": "ধারকী রোধ",
+      "type": "ac_circuits",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "X_C": {
+          "label": "Capacitive Reactance",
+          "label_bn": "ধারকী রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "omega_ac_c": {
+          "label": "Angular Frequency",
+          "label_bn": "কৌণিক কম্পাঙ্ক",
+          "unit": "rad/s",
+          "si_unit": "rad/s"
+        },
+        "C_XC": {
+          "label": "Capacitance",
+          "label_bn": "ধারকত্ব",
+          "unit": "F",
+          "si_unit": "F"
+        }
+      },
+      "solve_for": {
+        "X_C": {
+          "expr": "1/(omega_ac_c*C_XC)",
+          "solvable": true
+        },
+        "omega_ac_c": {
+          "expr": "1/(X_C*C_XC)",
+          "solvable": true
+        },
+        "C_XC": {
+          "expr": "1/(omega_ac_c*X_C)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "omega_ac_c > 0",
+        "C_XC > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "X_C",
+        "omega_ac_c",
+        "C_XC"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "impedance_rlc",
+      "name": "RLC Impedance",
+      "name_bn": "RLC প্রতিবাধা",
+      "type": "ac_circuits",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "Z": {
+          "label": "Impedance",
+          "label_bn": "প্রতিবাধা",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "R_rlc": {
+          "label": "Resistance",
+          "label_bn": "রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "X_L_rlc": {
+          "label": "Inductive Reactance",
+          "label_bn": "আবেশী রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        },
+        "X_C_rlc": {
+          "label": "Capacitive Reactance",
+          "label_bn": "ধারকী রোধ",
+          "unit": "Ohm",
+          "si_unit": "Ohm"
+        }
+      },
+      "solve_for": {
+        "Z": {
+          "expr": "sqrt(R_rlc^2 + (X_L_rlc - X_C_rlc)^2)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "Z >= R_rlc"
+      ],
+      "errors": [
+        "negative_sqrt"
+      ],
+      "depends_on": [
+        "inductive_reactance",
+        "capacitive_reactance"
+      ],
+      "memory_keys": [
+        "Z",
+        "R_rlc",
+        "X_L_rlc",
+        "X_C_rlc"
+      ],
+      "category": "algebraic",
+      "difficulty": "advanced"
+    },
+    {
+      "id": "resonant_frequency",
+      "name": "Resonant Frequency (LC)",
+      "name_bn": "অনুনাদ কম্পাঙ্ক",
+      "type": "ac_circuits",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "f_res": {
+          "label": "Resonant Frequency",
+          "label_bn": "অনুনাদ কম্পাঙ্ক",
+          "unit": "Hz",
+          "si_unit": "Hz"
+        },
+        "L_res": {
+          "label": "Inductance",
+          "label_bn": "আবেশ গুণাঙ্ক",
+          "unit": "H",
+          "si_unit": "H"
+        },
+        "C_res": {
+          "label": "Capacitance",
+          "label_bn": "ধারকত্ব",
+          "unit": "F",
+          "si_unit": "F"
+        }
+      },
+      "solve_for": {
+        "f_res": {
+          "expr": "1/(2*3.14159265359*sqrt(L_res*C_res))",
+          "solvable": true
+        },
+        "L_res": {
+          "expr": "1/(4*3.14159265359^2*f_res^2*C_res)",
+          "solvable": true
+        },
+        "C_res": {
+          "expr": "1/(4*3.14159265359^2*f_res^2*L_res)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "L_res > 0",
+        "C_res > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "f_res",
+        "L_res",
+        "C_res"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "transformer_ratio",
+      "name": "Transformer Ratio",
+      "name_bn": "ট্রান্সফরমার অনুপাত",
+      "type": "transformer",
+      "chapter": "electromagnetic_induction",
+      "variables": {
+        "V_s_tr": {
+          "label": "Secondary Voltage",
+          "label_bn": "গৌণ বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "V_p_tr": {
+          "label": "Primary Voltage",
+          "label_bn": "মুখ্য বিভব",
+          "unit": "V",
+          "si_unit": "V"
+        },
+        "N_s_tr": {
+          "label": "Secondary Turns",
+          "label_bn": "গৌণ পাক",
+          "unit": "",
+          "si_unit": ""
+        },
+        "N_p_tr": {
+          "label": "Primary Turns",
+          "label_bn": "মুখ্য পাক",
+          "unit": "",
+          "si_unit": ""
+        }
+      },
+      "solve_for": {
+        "V_s_tr": {
+          "expr": "V_p_tr*N_s_tr/N_p_tr",
+          "solvable": true
+        },
+        "V_p_tr": {
+          "expr": "V_s_tr*N_p_tr/N_s_tr",
+          "solvable": true
+        },
+        "N_s_tr": {
+          "expr": "V_s_tr*N_p_tr/V_p_tr",
+          "solvable": true
+        },
+        "N_p_tr": {
+          "expr": "V_p_tr*N_s_tr/V_s_tr",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "N_p_tr > 0",
+        "N_s_tr > 0",
+        "V_p_tr > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "V_s_tr",
+        "V_p_tr",
+        "N_s_tr",
+        "N_p_tr"
+      ],
+      "category": "algebraic",
+      "difficulty": "basic"
+    }
+  ],
+  "total_formulas": 12,
+  "total_types": 4
+}

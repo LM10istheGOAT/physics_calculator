@@ -1,0 +1,62 @@
+{
+  "chapter_id": "structural_properties",
+  "chapter_name": "Structural Properties & Fluids",
+  "chapter_name_bn": "পদার্থের গাঠনিক ধর্ম ও প্রবাহী পদার্থ",
+  "types": [
+    {
+      "id": "elasticity",
+      "name": "Elasticity",
+      "name_bn": "স্থিতিস্থাপকতা",
+      "formulas": [
+        "stress",
+        "strain",
+        "youngs_modulus",
+        "bulk_modulus"
+      ]
+    },
+    {
+      "id": "fluid_pressure",
+      "name": "Fluid Pressure",
+      "name_bn": "প্রবাহীর চাপ",
+      "formulas": [
+        "pressure_depth",
+        "pressure_force_area"
+      ]
+    },
+    {
+      "id": "buoyancy",
+      "name": "Buoyancy",
+      "name_bn": "ভাসমানতা",
+      "formulas": [
+        "archimedes_principle",
+        "floatation"
+      ]
+    },
+    {
+      "id": "bernoulli",
+      "name": "Bernoulli's Equation",
+      "name_bn": "বার্নোলির সমীকরণ",
+      "formulas": [
+        "bernoulli_equation",
+        "torricelli"
+      ]
+    },
+    {
+      "id": "viscosity",
+      "name": "Viscosity",
+      "name_bn": "সান্দ্রতা",
+      "formulas": [
+        "stokes_law",
+        "terminal_velocity"
+      ]
+    },
+    {
+      "id": "surface_tension",
+      "name": "Surface Tension",
+      "name_bn": "পৃষ্ঠটান",
+      "formulas": [
+        "capillary_rise"
+      ]
+    }
+  ]
+}

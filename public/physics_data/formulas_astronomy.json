@@ -1,0 +1,189 @@
+{
+  "chapter_id": "astronomy",
+  "chapter_name": "Astronomy",
+  "chapter_name_bn": "জ্যোতির্বিজ্ঞান",
+  "formulas": [
+    {
+      "id": "stellar_luminosity",
+      "name": "Stellar Luminosity",
+      "name_bn": "নক্ষত্রের ঔজ্জ্বল্য",
+      "type": "stellar_physics",
+      "chapter": "astronomy",
+      "variables": {
+        "L_star": {
+          "label": "Luminosity",
+          "label_bn": "ঔজ্জ্বল্য",
+          "unit": "W",
+          "si_unit": "W"
+        },
+        "sigma_sb": {
+          "label": "Stefan-Boltzmann Constant",
+          "label_bn": "স্টেফান-বোল্টজম্যান ধ্রুবক",
+          "unit": "W/(m^2*K^4)",
+          "si_unit": "W/(m^2*K^4)"
+        },
+        "R_star": {
+          "label": "Star Radius",
+          "label_bn": "নক্ষত্রের ব্যাসার্ধ",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "T_star": {
+          "label": "Surface Temperature",
+          "label_bn": "পৃষ্ঠের তাপমাত্রা",
+          "unit": "K",
+          "si_unit": "K"
+        }
+      },
+      "solve_for": {
+        "L_star": {
+          "expr": "4*3.14159265359*sigma_sb*R_star^2*T_star^4",
+          "solvable": true
+        },
+        "R_star": {
+          "expr": "sqrt(L_star/(4*3.14159265359*sigma_sb*T_star^4))",
+          "solvable": true
+        },
+        "T_star": {
+          "expr": "(L_star/(4*3.14159265359*sigma_sb*R_star^2))^(1/4)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "R_star > 0",
+        "T_star > 0",
+        "sigma_sb > 0"
+      ],
+      "errors": [
+        "division_by_zero",
+        "negative_sqrt"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "L_star",
+        "R_star",
+        "T_star"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "schwarzschild_radius",
+      "name": "Schwarzschild Radius (Black Hole)",
+      "name_bn": "শোয়ার্জশিল্ড ব্যাসার্ধ",
+      "type": "stellar_physics",
+      "chapter": "astronomy",
+      "variables": {
+        "R_s": {
+          "label": "Schwarzschild Radius",
+          "label_bn": "শোয়ার্জশিল্ড ব্যাসার্ধ",
+          "unit": "m",
+          "si_unit": "m"
+        },
+        "G_sch": {
+          "label": "Gravitational Constant",
+          "label_bn": "মহাকর্ষীয় ধ্রুবক",
+          "unit": "N*m^2/kg^2",
+          "si_unit": "N*m^2/kg^2"
+        },
+        "M_sch": {
+          "label": "Mass",
+          "label_bn": "ভর",
+          "unit": "kg",
+          "si_unit": "kg"
+        },
+        "c_sch": {
+          "label": "Speed of Light",
+          "label_bn": "আলোর দ্রুতি",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        }
+      },
+      "solve_for": {
+        "R_s": {
+          "expr": "2*G_sch*M_sch/c_sch^2",
+          "solvable": true
+        },
+        "M_sch": {
+          "expr": "R_s*c_sch^2/(2*G_sch)",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "M_sch > 0",
+        "c_sch > 0",
+        "G_sch > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "R_s",
+        "G_sch",
+        "M_sch",
+        "c_sch"
+      ],
+      "category": "algebraic",
+      "difficulty": "advanced"
+    },
+    {
+      "id": "hubble_law",
+      "name": "Hubble's Law",
+      "name_bn": "হাবলের সূত্র",
+      "type": "stellar_physics",
+      "chapter": "astronomy",
+      "variables": {
+        "v_hub": {
+          "label": "Recession Velocity",
+          "label_bn": "পলায়ন বেগ",
+          "unit": "m/s",
+          "si_unit": "m/s"
+        },
+        "H0": {
+          "label": "Hubble Constant",
+          "label_bn": "হাবল ধ্রুবক",
+          "unit": "1/s",
+          "si_unit": "1/s"
+        },
+        "d_hub": {
+          "label": "Distance",
+          "label_bn": "দূরত্ব",
+          "unit": "m",
+          "si_unit": "m"
+        }
+      },
+      "solve_for": {
+        "v_hub": {
+          "expr": "H0*d_hub",
+          "solvable": true
+        },
+        "H0": {
+          "expr": "v_hub/d_hub",
+          "solvable": true
+        },
+        "d_hub": {
+          "expr": "v_hub/H0",
+          "solvable": true
+        }
+      },
+      "constraints": [
+        "H0 > 0",
+        "d_hub > 0"
+      ],
+      "errors": [
+        "division_by_zero"
+      ],
+      "depends_on": [],
+      "memory_keys": [
+        "v_hub",
+        "H0",
+        "d_hub"
+      ],
+      "category": "algebraic",
+      "difficulty": "intermediate"
+    }
+  ],
+  "total_formulas": 3,
+  "total_types": 1
+}

@@ -1,0 +1,55 @@
+{
+  "chapter_id": "current_electricity",
+  "chapter_name": "Current Electricity",
+  "chapter_name_bn": "চল তড়িৎ",
+  "types": [
+    {
+      "id": "ohms_law",
+      "name": "Ohm's Law & Resistance",
+      "name_bn": "ওহমের সূত্র ও রোধ",
+      "formulas": [
+        "ohms_law",
+        "resistivity",
+        "resistance_temperature"
+      ]
+    },
+    {
+      "id": "electric_power_type",
+      "name": "Electric Power & Energy",
+      "name_bn": "তড়িৎ ক্ষমতা ও শক্তি",
+      "formulas": [
+        "electric_power_vi",
+        "electric_power_i2r",
+        "electric_energy"
+      ]
+    },
+    {
+      "id": "circuit_analysis",
+      "name": "Circuit Analysis",
+      "name_bn": "বর্তনী বিশ্লেষণ",
+      "formulas": [
+        "resistor_series",
+        "resistor_parallel",
+        "kirchhoff_junction"
+      ]
+    },
+    {
+      "id": "wheatstone",
+      "name": "Wheatstone Bridge",
+      "name_bn": "হোয়াটস্টোন ব্রিজ",
+      "formulas": [
+        "wheatstone_bridge"
+      ]
+    },
+    {
+      "id": "emf_internal",
+      "name": "EMF & Internal Resistance",
+      "name_bn": "তড়িৎ চালক বল ও আভ্যন্তরীণ রোধ",
+      "formulas": [
+        "emf_terminal",
+        "cells_series",
+        "cells_parallel"
+      ]
+    }
+  ]
+}

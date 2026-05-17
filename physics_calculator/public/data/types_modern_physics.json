@@ -1,0 +1,38 @@
+{
+  "chapter_id": "modern_physics",
+  "chapter_name": "Introduction to Modern Physics",
+  "chapter_name_bn": "আধুনিক পদার্থবিজ্ঞানের সূচনা",
+  "types": [
+    {
+      "id": "quantum",
+      "name": "Quantum Theory",
+      "name_bn": "কোয়ান্টাম তত্ত্ব",
+      "formulas": [
+        "photon_energy",
+        "photoelectric_eq",
+        "de_broglie",
+        "photon_momentum"
+      ]
+    },
+    {
+      "id": "relativity",
+      "name": "Special Relativity",
+      "name_bn": "বিশেষ আপেক্ষিকতা",
+      "formulas": [
+        "lorentz_contraction",
+        "time_dilation",
+        "relativistic_mass"
+      ]
+    },
+    {
+      "id": "bohr_model",
+      "name": "Bohr Model",
+      "name_bn": "বোর মডেল",
+      "formulas": [
+        "bohr_radius",
+        "bohr_energy",
+        "bohr_angular_momentum"
+      ]
+    }
+  ]
+}
