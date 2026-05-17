@@ -1,13 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+// Database module - placeholder for future database integration
+// Prisma is not used in this project. All data is loaded from static JSON files.
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
-}
-
-export const db =
-  globalForPrisma.prisma ??
-  new PrismaClient({
-    log: ['query'],
-  })
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db
+export const db = null;
